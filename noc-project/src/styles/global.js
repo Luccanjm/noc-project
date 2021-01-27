@@ -8,12 +8,12 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background: #3E3B3B;
+    background: #145E7D;
     color: #FFFFFF;
   }
   nav {
 
-    
+
   }
   html, body, #root{
     height: 100%;

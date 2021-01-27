@@ -1,0 +1,110 @@
+{
+    
+    "chamado":[
+        {
+            "id":1,
+            "numeroChamado": 435689,
+            "sistema": "NOC",
+            "requerenteChamado":"luana.silva",
+            "tecnico": "lucca.martinelli",
+            "statusChamado": "Processando",
+            "boletoIsTrue": true,
+            "valorBoleto": 350.00
+        },
+        {
+            "id":2,
+            "numeroChamado": 778854,
+            "sistema": "AIR",
+            "requerenteChamado":"gabriel.oliveira",
+            "tecnico": "isabella.couto",
+            "statusChamado": "Pendente",
+            "boletoIsTrue": true,
+            "valorBoleto": 250.00
+        },
+        {
+            "id":3,
+            "numeroChamado": 635322,
+            "sistema": "SYDLE",
+            "requerenteChamado":"juliana.andrade",
+            "tecnico": "sergio.ribeiro",
+            "statusChamado": "Finalizado",
+            "boletoIsTrue": true,
+            "valorBoleto": 150.00
+        }
+    ],
+    "tecnico":[
+        {
+            "id":1,
+            "nome":"lucca.martinelli"
+        },
+        {
+            "id":2,
+            "nome":"isabella.couto"
+        },
+        {
+            "id":3,
+            "nome":"lucas.lopes"
+        },
+        {
+            "id":4,
+            "nome":"douglas.silva"
+        },
+        {
+            "id":5,
+            "nome":"lais.moura"
+        },
+        {
+            "id":6,
+            "nome":"bruno.barros"
+        },
+        {
+            "id":7,
+            "nome":"raphael.medeiros"
+        },
+        {
+            "id":8,
+            "nome":"sergio.ribeiro"
+        },
+        {
+            "id":9,
+            "nome":"anderson.silva"
+        },
+        {
+            "id":10,
+            "nome":"rodrigo.cogliatti"
+        }
+    ],
+    "sistema":[
+        {
+            "id":1,
+            "nome":"AIR"
+        },
+        {
+            "id":2,
+            "nome":"SYDLE"
+        },
+        {
+            "id":3,
+            "nome":"NOC"
+        },
+        {
+            "id":4,
+            "nome":"GLPI"
+        }
+    ],
+    "statusChamado":[
+        {
+        "id":1,
+        "status":"Processando"
+        },
+        {
+            "id":2,
+            "status":"Pendente"
+            },
+            {
+                "id":3,
+                "status":"Finalizado"
+                }
+    ]
+
+}
