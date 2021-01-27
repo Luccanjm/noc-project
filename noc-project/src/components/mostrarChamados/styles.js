@@ -1,30 +1,36 @@
 import styled from 'styled-components';
-
 export const Container = styled.div`
-
 `;
+
 export const ContainerTable = styled.div`
-display:flex;
+display:block;
+
 .table{
     background:#c4c4cc;
-    width:900px;
+    width:1100px;
+    margin-top:15px;
+    text-align:center;
+    border-radius: 0 0 15px 15px;
 }
-.numero {
-    display: block;
-    width: 50%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-
+.card-detalhes {
+    width: 1100px;
+    // margin: 10px 20px 10px 20px;
+    text-align: center;
+    justify-content: center;
+    border: 2px solid rgb(0, 159, 227);
+    padding: 30px 10px;
+    color:black;
+    background:#c4c4cc;
+    border-radius: 15px;
+        
 }
 
+
+`;
+
+export const ContainerCard = styled.div`
+`;
+export const ContainerButton = styled.div`
+margin-right:20px;
 
 `;

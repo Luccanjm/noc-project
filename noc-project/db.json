@@ -8,7 +8,6 @@
             "requerenteChamado":"luana.silva",
             "tecnicoChamado": "lucca.martinelli",
             "statusChamado": "Processando",
-            "boletoIsTrue": true,
             "valorBoleto": 350.00
         },
         {
@@ -18,7 +17,6 @@
             "requerenteChamado":"gabriel.oliveira",
             "tecnicoChamado": "isabella.couto",
             "statusChamado": "Pendente",
-            "boletoIsTrue": true,
             "valorBoleto": 250.00
         },
         {
@@ -28,7 +26,6 @@
             "requerenteChamado":"juliana.andrade",
             "tecnicoChamado": "sergio.ribeiro",
             "statusChamado": "Finalizado",
-            "boletoIsTrue": true,
             "valorBoleto": 150.00
         }
     ],

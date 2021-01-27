@@ -4,8 +4,8 @@ import React, {
     useEffect
 } from 'react';
 
-import {ContainerTable} from './styles';
-import {Table,Container, Row, Col, Form, InputGroup,FormControl, Dropdown, NavItem, NavLink } from 'react-bootstrap';
+import {ContainerTable, ContainerButton, ContainerCard} from './styles';
+import {Table,Container, Row, Col,Card, Form, InputGroup,FormControl,Button } from 'react-bootstrap';
 import api from '../../services/api';
 import mostrarTecnicos from '../mostrarTecnicos';
 import Tecnico from '../mostrarTecnicos';
@@ -18,15 +18,20 @@ const ExibirChamados = () => {
     const [requerenteChamado, setRequerenteChamado] = useState('');
     const [tecnicoChamado, setTecnicoChamado] = useState('');
     const [statusChamado, setStatusChamado] = useState('');
-    const [boletoIsTrue, setBoletoIsTrue] = useState('');
     const [valorBoleto, setValorBoleto] = useState();
     const [erroMensagem, setErroMensagem] = useState('');
+    // ChamadoId
+    const [chamadoId, setChamadoId] = useState({});
+
 // tecnicos
     const [tecnicos, setTecnicos] = useState([]);
     const [novoTecnico, setNovoTecnico] = useState('');
 // sistemas
-const [sistemas, setSistemas] = useState([]);
-const [novoSistema, setNovoSistema] = useState('');
+    const [sistemas, setSistemas] = useState([]);
+    const [novoSistema, setNovoSistema] = useState('');
+// statusChamado
+    const [statusChamadoE, setStatusChamadoE] = useState([]);
+    const [novoStatus, setStatus] = useState('');
 
 // -------------------------------------------------------------------
     const mostrarChamados = useCallback(
@@ -57,7 +62,6 @@ const [novoSistema, setNovoSistema] = useState('');
                     requerenteChamado: requerenteChamado,
                     tecnicoChamado: tecnicoChamado,
                     statuschamado: statusChamado,
-                    boletoIsTrue: boletoIsTrue,
                     valorBoleto: valorBoleto
                 }
     
@@ -74,14 +78,13 @@ const [novoSistema, setNovoSistema] = useState('');
                     setRequerenteChamado('');
                     setTecnicoChamado('');
                     setStatusChamado('');
-                    boletoIsTrue('');
                     valorBoleto('');
                     console.log("Novo chamado adicionado com sucesso!");
                 } catch (error) {
                     setErroMensagem('Erro na criação');
                     
                 }
-            }, [mostrarChamados, numeroChamado, sistema, requerenteChamado, tecnicoChamado, statusChamado, boletoIsTrue, valorBoleto]
+            }, [mostrarChamados, numeroChamado, sistema, requerenteChamado, tecnicoChamado, statusChamado, valorBoleto]
     );
 
     const atualizarChamado = useCallback(
@@ -93,7 +96,6 @@ const [novoSistema, setNovoSistema] = useState('');
                     requerenteChamado: requerenteChamado,
                     tecnicoChamado: tecnicoChamado,
                     statuschamado: statusChamado,
-                    boletoIsTrue: boletoIsTrue,
                     valorBoleto: valorBoleto
             }
             try {
@@ -114,8 +116,20 @@ const [novoSistema, setNovoSistema] = useState('');
             }
         }, [mostrarChamados, chamadoE]
     );
-
-    // tecnicos
+//ChamadoId-------------------------------------------------------------------------------
+const mostrarChamadoId = useCallback(
+    async(idChamado)=>{
+        try {
+            const resposta = await api.get(`chamado/${idChamado}`);
+            setChamadoId(resposta.data);
+            console.log("resposta ChamadoId", resposta);
+        } catch (error) {
+            console.log("Erro na busca API ChamadoId",error);
+            setErroMensagem(error)
+        }
+    },[]
+);
+// tecnicos-------------------------------------------------------------------------------
     const mostrarTecnicos = useCallback(
         async () => {
             try {
@@ -250,94 +264,178 @@ const removerSistema = useCallback(
     }, [mostrarSistemas, sistemas]
 );
 
+//Status -----------------------------------------------------
+const mostrarStatus = useCallback(
+    async() => {
+        try {
+            const resposta = await api.get('statusChamado');
+            setStatusChamadoE(resposta.data);
+        } catch (error) {
+            console.log("Erro na busca da API", error);
+            setErroMensagem(error);
+        }
+    },[statusChamadoE]
+    );
+
+    useEffect(() =>{
+        mostrarStatus();
+    }, [mostrarStatus])
+
+    const adicionarStatus = useCallback(
+
+        async (e) => {
+            e.preventDefault();
+
+            const parametros = {
+                nome: novoStatus
+            }
+
+            if (!novoStatus) {
+                setErroMensagem('Nome vazio');
+                return;
+            }
+            setErroMensagem('');
+            try {
+                await api.post('statusChamado', parametros);
+                mostrarStatus();
+                setStatus('');
+                console.log("Novo status adicionado com sucesso!");
+            } catch (error) {
+                setErroMensagem('Erro na criação');
+                
+            }
+        }, [mostrarStatus, novoStatus]
+);
+
+const atualizarStatus = useCallback(
+    async(id) => {
+        const parametros ={
+            ...statusChamadoE,
+            nome: novoStatus
+        }
+        try {
+            await api.put(`statusChamado/${id}`, parametros);
+        } catch (error) {
+            setErroMensagem(error);
+        }
+    }
+);
+
+const removerStatus = useCallback(
+    async(id) => {
+        try {
+            await api.delete(`statusChamado/${id}`);
+            mostrarStatus();
+        } catch (error) {
+            setErroMensagem(error);
+        }
+    }, [mostrarStatus, statusChamadoE]
+);
+
 
     return(
         <>
-        
-<ContainerTable>
-  
-    <Table responsive="sm">
-        <thead>
-            <tr>
-                <td>Chamado</td>
-                <td>Status </td>
-                <td>Técnico</td>
-                <td>Sistema</td>
-                <td>Requerente</td>
-                <td>Valor Boleto</td>
-        
-                </tr>
-        </thead>
-        <tbody>
-        <tr>
-    <td> 
-    
-    <FormControl className="numero" aria-label="Chamado)" />
-    
-  </td>
-      <td>
-        <Form.Group controlId="Select1">
-    <Form.Control className="status" as="select" >
-    <option>Pendente</option>
-      <option>Finalizado</option>
-      <option>Processando</option>
-    </Form.Control>
-  </Form.Group>
-  </td>
-  <td>
-  <Form.Group controlId="Select2">
-    <Form.Control as="select">   
+        <ContainerTable>
+            {/* <ContainerCard> */}
+  <Card className="card-detalhes"> 
+ <Row >
+    <Col>Chamado </Col>
+   <Col>Status</Col>
+   <Col>Técnico</Col>
+   <Col>Sistema</Col>
+   <Col>Requerente</Col>
+   <Col>Valor do boleto</Col>
+   <ContainerButton>
+   <Col></Col>
+   </ContainerButton>
+ </Row>
+ <Row>
+    <Col>
+        <FormControl className="numero" aria-label="Chamado)"value={chamadoE.numeroChamado} /> 
+    </Col>
+    <Col>
+    <Form.Group controlId="Select1">
+        <Form.Control className="status" as="select" >
+            { statusChamadoE.map(
+                    (item) =>
+                    <option value={chamadoE.statusChamado}>{item.status}</option>
+                    )}
+        </Form.Control>
+    </Form.Group>
+  </Col>
+    <Col> 
+        <Form.Group controlId="Select2">
+            <Form.Control as="select">   
                     
                     { tecnicos.map(
                     (item) =>
-                    <option>{item.nome}</option>
+                    <option value={chamadoE.tecnicoChamado}>{item.nome}</option>
                     )}
 
-    </Form.Control>
-  </Form.Group>
-  </td>
-  <td>
-  <Form.Group controlId="Select3">
-    <Form.Control as="select">
-    { sistemas.map(
-                    (item) =>
-                    <option>{item.nome}</option>
-                    )}
-    </Form.Control>
-  </Form.Group>
-  </td>
-      <td> 
-        <FormControl aria-label="Amount (to the nearest dollar)" />
-      </td>
-      <td> 
+            </Form.Control>
+     </Form.Group>
+  </Col>
+   <Col>  
+        <Form.Group controlId="Select3">
+            <Form.Control as="select">
+                { sistemas.map(
+                                (item) =>
+                                <option value={chamadoE.sistema}>{item.nome}</option>
+                                )}
+            </Form.Control>
+        </Form.Group>
+    </Col>
+    <Col> 
+        <FormControl aria-label="Amount (to the nearest dollar)" value={chamadoE.requerenteChamado}/>
+    </Col>
+   <Col xs={2}>
         <InputGroup className="mb-3">
-    <InputGroup.Prepend>
-      <InputGroup.Text>R$</InputGroup.Text>
-    </InputGroup.Prepend>
-    <FormControl aria-label="Amount (to the nearest real)" />
-    <InputGroup.Append>
-      <InputGroup.Text>,00</InputGroup.Text>
-    </InputGroup.Append>
-  </InputGroup>
-  </td>   
-    </tr>
-            {chamadoE.map((item) =>
-                        <tr>
-                            <td> {item.numeroChamado}</td>
-                            <td> {item.statusChamado}</td>
-                            <td> {item.tecnicoChamado}</td>
-                            <td> {item.sistema}</td>
-                            <td> {item.requerenteChamado}</td>
-                            <td> {item.valorBoleto}</td>
-            
-                        </tr>
-                        
-                        )}
-                        
-            
-        
-        </tbody>
-    </Table>
+            <InputGroup.Prepend>
+                <InputGroup.Text value={chamadoE.valorBoleto}>R$</InputGroup.Text>
+            </InputGroup.Prepend>
+
+            <FormControl aria-label="Amount (to the nearest real)" />
+        </InputGroup>
+    </Col>
+    <ContainerButton>
+    <Col classclassName="button" xs={1}> 
+        <Button variant="primary" onClick={(chamadoId)=> adicionarChamado(chamadoId)}>Enviar</Button>{' '}
+    </Col> 
+    </ContainerButton>
+ </Row>
+
+ </Card>
+ {/* </ContainerCard> */}
+
+ <Table responsive="sm">
+    <thead>
+        <th>Chamado </th>
+        <th>Status</th>
+        <th>Técnico</th>
+        <th>Sistema</th>
+        <th>Requerente</th>
+        <th>Valor do boleto</th>
+    </thead>
+    
+    <tbody>
+        {chamadoE.map((item) =>
+            <tr>
+                <td> {item.numeroChamado}</td>
+                <td> {item.statusChamado}</td>
+                <td> {item.tecnicoChamado}</td>
+                <td> {item.sistema}</td>
+                <td> {item.requerenteChamado}</td>
+                <td> {item.valorBoleto}</td>
+                
+            </tr>
+                            
+        )}
+    </tbody> 
+                
+</Table>
+      
+
+
 </ContainerTable>
   </> );
 }
