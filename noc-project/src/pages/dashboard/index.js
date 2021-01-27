@@ -1,29 +1,36 @@
 import React from 'react';
-import {InputGroup, FormControl} from 'react-bootstrap';
-import {ContainerInput} from './styles';
+import {InputGroup, FormControl, Button} from 'react-bootstrap';
+import {ContainerInput, Box, Footer, ContainerImg, InputLogin, ContainerBox, PInput} from './styles';
+import logoAzul from '../../assets/logoAzul.png';
 
 const Dashboard = () =>{
     <>
     </>
     return(
+
         <>
-        <div>
-            <ContainerInput>
-  <InputGroup size="lg">
-    <InputGroup.Prepend>
-      <InputGroup.Text id="inputGroup-sizing-lg">Usuário</InputGroup.Text>
-    </InputGroup.Prepend>
-    <FormControl aria-label="Large" aria-describedby="inputGroup-sizing-sm"/>
-  </InputGroup>
-  <InputGroup size="lg">
-    <InputGroup.Prepend>
-      <InputGroup.Text id="inputGroup-sizing-lg">Senha</InputGroup.Text>
-    </InputGroup.Prepend>
-    <FormControl aria-label="Large" aria-describedby="inputGroup-sizing-sm"/>
-  </InputGroup>
-  </ContainerInput>
-</div>
-        </>
+        <Box>
+
+            <ContainerBox>
+              <ContainerImg>
+                <img src={logoAzul} alt></img>
+              </ContainerImg>
+
+
+              <ContainerInput>
+                <PInput>E-mail</PInput>
+                <InputLogin type="email"></InputLogin>
+                <PInput>Senha</PInput>
+                <InputLogin type="password"></InputLogin>
+                <Button as="input" type="submit" value="Entrar" />{' '}
+
+              </ContainerInput>
+            </ContainerBox>
+        </Box>
+        <Footer>
+          <p>&copy; Desenvolvido pelo NOC | Sumicity</p>
+        </Footer>
+</>
         );
 }
 export default Dashboard;
