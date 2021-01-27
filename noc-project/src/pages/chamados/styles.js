@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import {logoBranco, dropdownNav} from './index';
 
 export const ContainerGeral = styled.div`
 display:grid;
 grid-gap: 0.6rem;
-grid-template-rows:10 vh 85vh 5vh;
+grid-template-rows:10vh 85vh 5vh;
 grid-template-column: 1fr 1fr 1fr;
 grid-template-areas: "h h h" 
                      "m m m"

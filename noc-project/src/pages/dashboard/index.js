@@ -3,11 +3,11 @@ import {InputGroup, FormControl, Button} from 'react-bootstrap';
 import {ContainerInput, Box, Footer, ContainerImg, InputLogin, ContainerBox, PInput} from './styles';
 import logoAzul from '../../assets/logoAzul.png';
 
+
 const Dashboard = () =>{
     <>
     </>
     return(
-
         <>
         <Box>
 
@@ -18,7 +18,7 @@ const Dashboard = () =>{
 
 
               <ContainerInput>
-                <PInput>E-mail</PInput>
+                <PInput>Usuário</PInput>
                 <InputLogin type="email"></InputLogin>
                 <PInput>Senha</PInput>
                 <InputLogin type="password"></InputLogin>

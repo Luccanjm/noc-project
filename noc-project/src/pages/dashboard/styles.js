@@ -1,9 +1,11 @@
+import { createGlobalStyle } from 'styled-components';
 import styled from 'styled-components';
 
 export const Box = styled.div`
 display:flex;
 justify-content:center;
 margin-top:200px;
+
 `;
 export const ContainerImg = styled.div`
 display:flex;
@@ -39,3 +41,4 @@ export const Footer = styled.footer`
 margin-top:10px;
 text-align:center;
 `;
+
