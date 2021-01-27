@@ -1,9 +1,16 @@
 import React from 'react';
-import {BrowserRouter, Switch, Router} from 'react-router-dom';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import Dashboard from '../pages/dashboard';
+import Chamados from '../pages/chamados';
 
 const Routes = () => (
 <BrowserRouter>
 <Switch>
+<Route path="/" component={Dashboard} exact />
+<Route path="/dashboard" component={Dashboard}/>
+<Route path="/chamados" component={Chamados}/>
+
+
 
 </Switch>
 </BrowserRouter>

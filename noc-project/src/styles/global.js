@@ -11,6 +11,10 @@ const GlobalStyle = createGlobalStyle`
     background: #3E3B3B;
     color: #FFFFFF;
   }
+  nav {
+
+    
+  }
   html, body, #root{
     height: 100%;
   }
