@@ -1,6 +1,6 @@
 import React from 'react';
-import {Nav, Table,  Form, InputGroup,FormControl, Dropdown, NavItem, NavLink } from 'react-bootstrap';
-import {Header, Main, Footer, ContainerTable, ContainerImg, ContainerGeral} from './styles';
+import {Nav, Dropdown } from 'react-bootstrap';
+import {Header, Main, Footer, ContainerTable, ContainerImg, ContainerGeral, Lista, LinhaLista, LinkLista} from './styles';
 import logoBranco from '../../assets/logo.png';
 
 import ExibirChamados from '../../components/mostrarChamados';
@@ -16,11 +16,11 @@ const Chamados = () =>{
                 <ContainerImg>
                     <img src={logoBranco} alt></img>
                 </ContainerImg>
-            <ul>
-                <li>Chamados</li>
-                <li>Criar Chamado</li>
-                <li>Gerar Relatório</li>
-                <li>Criar Perfil Técnico</li>
+            <Lista>
+                <LinhaLista><LinkLista href="#">Chamados</LinkLista></LinhaLista>
+                <LinhaLista><LinkLista href="#">Criar Chamado</LinkLista></LinhaLista>
+                <LinhaLista><LinkLista href="#">Gerar Relatório</LinkLista></LinhaLista>
+                <LinhaLista><LinkLista href="#">Criar Perfil Técnico</LinkLista></LinhaLista>
                 <li><Dropdown>
                         <Dropdown.Toggle variant="success" id="dropdown-basic">
                             lucca.martinelli
@@ -32,7 +32,7 @@ const Chamados = () =>{
                         </Dropdown.Menu>
                     </Dropdown>
                 </li>
-            </ul>
+            </Lista>
      
                 </Nav>
         </Header>

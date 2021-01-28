@@ -43,6 +43,20 @@ padding: 0;
 
 }
 `;
+export const Lista = styled.ul`
+`;
+
+export const LinhaLista = styled.li`
+`;
+
+export const LinkLista = styled.a`
+text-decoration:none;
+color:inherit;
+LinkLista:hover{
+    color:white;
+}
+`;
+
 export const ContainerImg = styled.div`
 `;
 export const Main = styled.main`

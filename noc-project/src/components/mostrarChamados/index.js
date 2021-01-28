@@ -19,6 +19,7 @@ const ExibirChamados = () => {
     const [tecnicoChamado, setTecnicoChamado] = useState('');
     const [statusChamado, setStatusChamado] = useState('');
     const [valorBoleto, setValorBoleto] = useState();
+    const [mesChamado, setMesChamado] = useState('');
     const [erroMensagem, setErroMensagem] = useState('');
     // ChamadoId
     const [chamadoId, setChamadoId] = useState({});
@@ -32,6 +33,8 @@ const ExibirChamados = () => {
 // statusChamado
     const [statusChamadoE, setStatusChamadoE] = useState([]);
     const [novoStatus, setStatus] = useState('');
+//MesChamado
+const [mesChamadoE, setMesChamadoE] = useState([]);
 
 // -------------------------------------------------------------------
     const mostrarChamados = useCallback(
@@ -62,7 +65,8 @@ const ExibirChamados = () => {
                     requerenteChamado: requerenteChamado,
                     tecnicoChamado: tecnicoChamado,
                     statuschamado: statusChamado,
-                    valorBoleto: valorBoleto
+                    valorBoleto: valorBoleto,
+                    mesChamado: mesChamado
                 }
     
                 if (!numeroChamado) {
@@ -79,12 +83,13 @@ const ExibirChamados = () => {
                     setTecnicoChamado('');
                     setStatusChamado('');
                     valorBoleto('');
+                    mesChamado('');
                     console.log("Novo chamado adicionado com sucesso!");
                 } catch (error) {
                     setErroMensagem('Erro na criação');
                     
                 }
-            }, [mostrarChamados, numeroChamado, sistema, requerenteChamado, tecnicoChamado, statusChamado, valorBoleto]
+            }, [mostrarChamados, numeroChamado, sistema, requerenteChamado, tecnicoChamado, statusChamado, valorBoleto, mesChamado]
     );
 
     const atualizarChamado = useCallback(
@@ -96,7 +101,8 @@ const ExibirChamados = () => {
                     requerenteChamado: requerenteChamado,
                     tecnicoChamado: tecnicoChamado,
                     statuschamado: statusChamado,
-                    valorBoleto: valorBoleto
+                    valorBoleto: valorBoleto,
+                    mesChamado: mesChamado
             }
             try {
                 await api.put(`chamado/${id}`, parametros);
@@ -129,6 +135,24 @@ const mostrarChamadoId = useCallback(
         }
     },[]
 );
+// MesChamado ------------------------------------------------------------------------------------------
+  
+const mostrarMesChamado = useCallback(
+    async() => {
+        try {
+            const resposta = await api.get('mesChamado');
+            setMesChamadoE(resposta.data);
+        } catch (error) {
+            console.log("Erro na busca da API", error);
+            setErroMensagem(error);
+        }
+    },[mesChamadoE]
+    );
+
+    useEffect(() =>{
+        mostrarMesChamado();
+    }, [mostrarMesChamado])
+
 // tecnicos-------------------------------------------------------------------------------
     const mostrarTecnicos = useCallback(
         async () => {
@@ -145,56 +169,6 @@ const mostrarChamadoId = useCallback(
         mostrarTecnicos();
     }, [mostrarTecnicos])
     
-    const adicionarTecnico = useCallback(
-
-        async (e) => {
-            e.preventDefault();
-
-            const parametros = {
-                nome: novoTecnico
-            }
-
-            if (!novoTecnico) {
-                setErroMensagem('Nome vazio');
-                return;
-            }
-            setErroMensagem('');
-            try {
-                await api.post('tecnico', parametros);
-                mostrarTecnicos();
-                setNovoTecnico('');
-                console.log("Novo tecnico adicionado com sucesso!");
-            } catch (error) {
-                setErroMensagem('Erro na criação');
-                
-            }
-        }, [mostrarTecnicos, novoTecnico]
-);
-
-const atualizarTecnico = useCallback(
-    async(id) => {
-        const parametros ={
-            ...tecnicos,
-            nome: novoTecnico
-        }
-        try {
-            await api.put(`tecnico/${id}`, parametros);
-        } catch (error) {
-            setErroMensagem(error);
-        }
-    }
-);
-
-const removerTecnico = useCallback(
-    async(id) => {
-        try {
-            await api.delete(`tecnico/${id}`);
-            mostrarTecnicos();
-        } catch (error) {
-            setErroMensagem(error);
-        }
-    }, [mostrarTecnicos, tecnicos]
-);
 
 // sistemas
 const mostrarSistemas = useCallback(
@@ -213,57 +187,6 @@ const mostrarSistemas = useCallback(
         mostrarSistemas();
     }, [mostrarSistemas])
 
-    const adicionarSistema = useCallback(
-
-        async (e) => {
-            e.preventDefault();
-
-            const parametros = {
-                nome: novoSistema
-            }
-
-            if (!novoSistema) {
-                setErroMensagem('Nome vazio');
-                return;
-            }
-            setErroMensagem('');
-            try {
-                await api.post('sistema', parametros);
-                mostrarSistemas();
-                setNovoSistema('');
-                console.log("Novo sistema adicionado com sucesso!");
-            } catch (error) {
-                setErroMensagem('Erro na criação');
-                
-            }
-        }, [mostrarSistemas, novoSistema]
-);
-
-const atualizarSistema = useCallback(
-    async(id) => {
-        const parametros ={
-            ...sistemas,
-            nome: novoSistema
-        }
-        try {
-            await api.put(`sistema/${id}`, parametros);
-        } catch (error) {
-            setErroMensagem(error);
-        }
-    }
-);
-
-const removerSistema = useCallback(
-    async(id) => {
-        try {
-            await api.delete(`sistema/${id}`);
-            mostrarSistemas();
-        } catch (error) {
-            setErroMensagem(error);
-        }
-    }, [mostrarSistemas, sistemas]
-);
-
 //Status -----------------------------------------------------
 const mostrarStatus = useCallback(
     async() => {
@@ -281,79 +204,37 @@ const mostrarStatus = useCallback(
         mostrarStatus();
     }, [mostrarStatus])
 
-    const adicionarStatus = useCallback(
-
-        async (e) => {
-            e.preventDefault();
-
-            const parametros = {
-                nome: novoStatus
-            }
-
-            if (!novoStatus) {
-                setErroMensagem('Nome vazio');
-                return;
-            }
-            setErroMensagem('');
-            try {
-                await api.post('statusChamado', parametros);
-                mostrarStatus();
-                setStatus('');
-                console.log("Novo status adicionado com sucesso!");
-            } catch (error) {
-                setErroMensagem('Erro na criação');
-                
-            }
-        }, [mostrarStatus, novoStatus]
-);
-
-const atualizarStatus = useCallback(
-    async(id) => {
-        const parametros ={
-            ...statusChamadoE,
-            nome: novoStatus
-        }
-        try {
-            await api.put(`statusChamado/${id}`, parametros);
-        } catch (error) {
-            setErroMensagem(error);
-        }
-    }
-);
-
-const removerStatus = useCallback(
-    async(id) => {
-        try {
-            await api.delete(`statusChamado/${id}`);
-            mostrarStatus();
-        } catch (error) {
-            setErroMensagem(error);
-        }
-    }, [mostrarStatus, statusChamadoE]
-);
-
-
     return(
         <>
         <ContainerTable>
             {/* <ContainerCard> */}
   <Card className="card-detalhes"> 
- <Row >
-    <Col>Chamado </Col>
-   <Col>Status</Col>
-   <Col>Técnico</Col>
-   <Col>Sistema</Col>
-   <Col>Requerente</Col>
-   <Col>Valor do boleto</Col>
-   <ContainerButton>
-   <Col></Col>
-   </ContainerButton>
- </Row>
- <Row>
-    <Col>
+  <Table responsive="sm">
+ <thead>
+    <th>Chamado </th>
+    <th>Mês</th>
+   <th>Status</th>
+   <th>Técnico</th>
+   <th>Sistema</th>
+   <th>Requerente</th>
+   <th>Valor do boleto</th>
+   <th ></th>
+ </thead>
+ <tbody>
+    <td>
         <FormControl className="numero" aria-label="Chamado)"value={chamadoE.numeroChamado} /> 
-    </Col>
-    <Col>
+    </td>
+    <td>
+    <Form.Group controlId="Select1">
+        <Form.Control className="status" as="select" >
+            { mesChamadoE.map(
+                    (item) =>
+                    <option value={chamadoE.mesChamado}>{item.nomeMes}</option>
+                    )}
+        </Form.Control>
+    </Form.Group>
+  </td>
+  <td>
     <Form.Group controlId="Select1">
         <Form.Control className="status" as="select" >
             { statusChamadoE.map(
@@ -362,8 +243,8 @@ const removerStatus = useCallback(
                     )}
         </Form.Control>
     </Form.Group>
-  </Col>
-    <Col> 
+  </td>
+    <td> 
         <Form.Group controlId="Select2">
             <Form.Control as="select">   
                     
@@ -374,8 +255,8 @@ const removerStatus = useCallback(
 
             </Form.Control>
      </Form.Group>
-  </Col>
-   <Col>  
+  </td>
+   <td>  
         <Form.Group controlId="Select3">
             <Form.Control as="select">
                 { sistemas.map(
@@ -384,11 +265,11 @@ const removerStatus = useCallback(
                                 )}
             </Form.Control>
         </Form.Group>
-    </Col>
-    <Col> 
+    </td>
+    <td> 
         <FormControl aria-label="Amount (to the nearest dollar)" value={chamadoE.requerenteChamado}/>
-    </Col>
-   <Col xs={2}>
+    </td>
+   <td>
         <InputGroup className="mb-3">
             <InputGroup.Prepend>
                 <InputGroup.Text value={chamadoE.valorBoleto}>R$</InputGroup.Text>
@@ -396,20 +277,25 @@ const removerStatus = useCallback(
 
             <FormControl aria-label="Amount (to the nearest real)" />
         </InputGroup>
-    </Col>
+    </td>
+<td>
     <ContainerButton>
-    <Col classclassName="button" xs={1}> 
-        <Button variant="primary" onClick={(chamadoId)=> adicionarChamado(chamadoId)}>Enviar</Button>{' '}
-    </Col> 
+    {/* <Col classclassName="button" xs={1}>  */}
+        <Button variant="primary" onClick={(parametros)=> adicionarChamado(parametros)}>Enviar</Button>{' '}
+    {/* </Col>  */}
     </ContainerButton>
- </Row>
+    </td>
+ </tbody>
+ </Table>
 
+ 
  </Card>
  {/* </ContainerCard> */}
 
  <Table responsive="sm">
     <thead>
         <th>Chamado </th>
+        <th>Mês</th>
         <th>Status</th>
         <th>Técnico</th>
         <th>Sistema</th>
@@ -421,11 +307,13 @@ const removerStatus = useCallback(
         {chamadoE.map((item) =>
             <tr>
                 <td> {item.numeroChamado}</td>
+                <td> {item.mesChamado}</td>
                 <td> {item.statusChamado}</td>
                 <td> {item.tecnicoChamado}</td>
                 <td> {item.sistema}</td>
                 <td> {item.requerenteChamado}</td>
                 <td> {item.valorBoleto}</td>
+                
                 
             </tr>
                             
@@ -440,3 +328,7 @@ const removerStatus = useCallback(
   </> );
 }
 export default ExibirChamados; 
+
+
+
+

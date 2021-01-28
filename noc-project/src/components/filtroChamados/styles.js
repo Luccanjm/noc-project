@@ -11,23 +11,21 @@ display:block;
     margin-top:15px;
     text-align:center;
     border-radius: 0 0 15px 15px;
-    border: none;
-
 }
 .card-detalhes {
     width: 1100px;
     text-align: center;
     justify-content: center;
-    border: none;
-    // padding: 30px 10px;
+    border: 2px solid rgb(0, 159, 227);
+    padding: 30px 10px;
     color:black;
     background:#c4c4cc;
     border-radius: 15px;
         
 }
-// .titulo{
-//     margin-right: 10px;
-// }
+.titulo{
+    margin: 0 -25px;
+}
 
 `;
 
