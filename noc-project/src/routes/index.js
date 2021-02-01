@@ -3,6 +3,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Dashboard from '../pages/dashboard';
 import Chamados from '../pages/chamados';
 import TesteFiltro from '../components/filtroChamados';
+import PostChamado from '../components/postChamado';
 
 // import Tecnico from '../components/mostrarTecnicos';
 // import Sistema from '../components/mostrarSistemas';
@@ -17,7 +18,7 @@ const Routes = () => (
 <Route path="/" component={Dashboard} exact />
 <Route path="/dashboard" component={Dashboard}/>
 <Route path="/chamados" component={Chamados}/>
-<Route path="/teste" component={TesteFiltro}/>
+<Route path="/post" component={PostChamado}/>
 
 {/* <Route path="/exibec" component={ExibirChamados}/> */}
 

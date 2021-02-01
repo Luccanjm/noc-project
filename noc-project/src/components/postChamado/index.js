@@ -10,7 +10,7 @@ import api from '../../services/api';
 import mostrarTecnicos from '../mostrarTecnicos';
 import Tecnico from '../mostrarTecnicos';
 
-const ExibirChamados = () => {
+const PostChamado = () => {
 // chamados 
     const [chamadoE, setChamadosE] = useState([]);
     const [numeroChamado, setNumeroChamado] = useState('');
@@ -209,94 +209,9 @@ const mostrarStatus = useCallback(
     return(
         <>
         <ContainerTable>
-            {/* <ContainerCard> */}
-  <Card className="card-detalhes"> 
-  <Table responsive="sm">
- <thead>
-    <th>Chamado </th>
-    <th>Mês</th>
-   <th>Status</th>
-   <th>Técnico</th>
-   <th>Sistema</th>
-   <th>Requerente</th>
-   <th>Valor do boleto</th>
-   <th ></th>
- </thead>
- <tbody>
-     
-    <td>
-
-        <FormControl onSubmit={(e) => adicionarChamado(e)} className="numero" aria-label="Chamado)"value={chamadoE.numeroChamado} /> 
-    </td>
-    <td>
-    <Form.Group controlId="Select1">
-        <Form.Control  className="status" as="select" >
-            { mesChamadoE.map(
-                    (item) =>
-                    <option value={chamadoE.mesChamado}>{item.nomeMes}</option>
-                    )}
-        </Form.Control>
-    </Form.Group>
-  </td>
-  <td>
-    <Form.Group controlId="Select1">
-        <Form.Control className="status" as="select" >
-            { statusChamadoE.map(
-                    (item) =>
-                    <option value={chamadoE.statusChamado}>{item.status}</option>
-                    )}
-        </Form.Control>
-    </Form.Group>
-  </td>
-    <td> 
-        <Form.Group controlId="Select2">
-            <Form.Control as="select">   
-                    
-                    { tecnicos.map(
-                    (item) =>
-                    <option value={chamadoE.tecnicoChamado}>{item.nome}</option>
-                    )}
-
-            </Form.Control>
-     </Form.Group>
-  </td>
-   <td>  
-        <Form.Group controlId="Select3">
-            <Form.Control as="select">
-                { sistemas.map(
-                                (item) =>
-                                <option value={chamadoE.sistema}>{item.nome}</option>
-                                )}
-            </Form.Control>
-        </Form.Group>
-    </td>
-    <td> 
-        <FormControl aria-label="Amount (to the nearest dollar)" value={chamadoE.requerenteChamado}/>
-    </td>
-   <td>
-        <InputGroup className="mb-3">
-            <InputGroup.Prepend>
-                <InputGroup.Text value={chamadoE.valorBoleto}>R$</InputGroup.Text>
-            </InputGroup.Prepend>
-
-            <FormControl aria-label="Amount (to the nearest real)" />
-        </InputGroup>
-    </td>
-<td>
-    <ContainerButton>
-    {/* <Col classclassName="button" xs={1}>  */}
-        <Button variant="primary" onClick={(parametros)=> adicionarChamado(parametros)}>Enviar</Button>{' '}
-    {/* </Col>  */}
-    </ContainerButton>
-    </td>
- </tbody>
- </Table>
-
- 
- </Card>
-
- {/* </ContainerCard> */}
-
+            
+   
+{/* 
  <Table responsive="sm">
     <thead>
         <th>Chamado </th>
@@ -325,14 +240,14 @@ const mostrarStatus = useCallback(
         )}
     </tbody> 
                 
-</Table>
+</Table> */}
       
 
 
 </ContainerTable>
   </> );
 }
-export default ExibirChamados; 
+export default PostChamado; 
 
 
 
