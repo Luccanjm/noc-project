@@ -99,10 +99,17 @@ const [mesChamadoE, setMesChamadoE] = useState([]);
                     return;
                 }
                 setErroMensagem('');
-                if(numeroChamado.includes(numeroChamado)){
-                    console.log("já existe esse numer");
-                }
+           
                 try {
+                    let naoCria = 0;
+
+                    chamadoE.filter(i =>
+                        numeroChamado.includes(i.numeroChamado)
+                      ).length > 0
+                        ? console.log("número repetido", naoCria = 1)
+                        : console.log("Criado com sucesso", naoCria);
+                        if(naoCria === 0){
+                        
                     const resposta = await api.post('chamado', parametros);
                     mostrarChamados('');
                     setNumeroChamado('');
@@ -113,11 +120,17 @@ const [mesChamadoE, setMesChamadoE] = useState([]);
                     valorBoleto('');
                     mesChamado('');
                     console.log("Novo chamado adicionado com sucesso!");
+
+                        }else{
+                            alert("Número de chamado já existente.")
+                        }
                 } catch (error) {
                     setErroMensagem('Erro na criação api(adicionarChamado)');
                     
                 }
+      
             }, [mostrarChamados, numeroChamado, sistema, requerenteChamado, tecnicoChamado, statusChamado, valorBoleto, mesChamado]
+            
     );
 
     const atualizarChamado = useCallback(

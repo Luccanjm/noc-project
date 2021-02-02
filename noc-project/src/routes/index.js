@@ -2,7 +2,6 @@ import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Dashboard from '../pages/dashboard';
 import Chamados from '../pages/chamados';
-import TesteFiltro from '../components/filtroChamados';
 import PostChamado from '../components/postChamado';
 
 // import Tecnico from '../components/mostrarTecnicos';
@@ -20,7 +19,6 @@ const Routes = () => (
 <Route path="/chamados" component={Chamados}/>
 <Route path="/post" component={PostChamado}/>
 
-{/* <Route path="/exibec" component={ExibirChamados}/> */}
 
 
 </Switch>

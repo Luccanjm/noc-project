@@ -91,54 +91,14 @@
       "id": 9
     },
     {
-      "numeroChamado": "23424",
-      "sistema": "SYDLE",
-      "requerenteChamado": "joaquina",
-      "tecnicoChamado": "douglas.silva",
-      "statusChamado": "Pendente",
-      "valorBoleto": "10",
-      "mesChamado": "Novembro",
-      "id": 10
-    },
-    {
-      "numeroChamado": "234324",
-      "sistema": "NOC",
-      "requerenteChamado": "gabriel",
-      "tecnicoChamado": "rodrigo.cogliatti",
-      "statusChamado": "Finalizado",
-      "valorBoleto": "22.25",
-      "mesChamado": "Abril",
-      "id": 11
-    },
-    {
-      "numeroChamado": "435689",
-      "sistema": "SYDLE",
-      "requerenteChamado": "isdha",
-      "tecnicoChamado": "douglas.silva",
-      "statusChamado": "Pendente",
-      "valorBoleto": "12",
-      "mesChamado": "Fevereiro",
-      "id": 12
-    },
-    {
-      "numeroChamado": "123123",
-      "sistema": "SYDLE",
-      "requerenteChamado": "wrfa",
-      "tecnicoChamado": "isabella.couto",
-      "statusChamado": "Pendente",
-      "valorBoleto": "32",
-      "mesChamado": "Março",
-      "id": 13
-    },
-    {
-      "numeroChamado": "23212367687",
-      "sistema": "SYDLE",
-      "requerenteChamado": "3242",
+      "numeroChamado": "123444",
+      "sistema": "GLPI",
+      "requerenteChamado": "mel",
       "tecnicoChamado": "lucas.lopes",
       "statusChamado": "Pendente",
-      "valorBoleto": "0",
-      "mesChamado": "Abril",
-      "id": 14
+      "valorBoleto": "22",
+      "mesChamado": "Março",
+      "id": 10
     }
   ],
   "tecnico": [
