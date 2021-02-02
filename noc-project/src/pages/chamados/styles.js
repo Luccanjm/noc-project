@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ContainerGeral = styled.div`
 display:grid;
 grid-gap: 0.6rem;
-grid-template-rows:10vh 85vh 5vh;
+grid-template-rows:10vh auto 5vh;
 grid-template-column: 1fr 1fr 1fr;
 grid-template-areas: "h h h" 
                      "m m m"
@@ -69,7 +69,8 @@ justify-content:center;
 `;
 export const Footer = styled.footer`
 grid-area:f;
-text-align:center;
+display:flex;
+justify-content:center;
 `;
 // export const 
 

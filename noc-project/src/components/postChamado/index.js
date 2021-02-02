@@ -4,8 +4,8 @@ import React, {
     useEffect
 } from 'react';
 
-import {ContainerTable, ContainerButton, ContainerCard, FormPost, Infos,Input, Select, Option, ButtonSubmit} from './styles';
-import {Table,Container, Row, Col,Card, Form, InputGroup,FormControl,Button} from 'react-bootstrap';
+import {ContainerTable, ContainerPost, FormPost, Infos,Input, Select, Option, ButtonSubmit} from './styles';
+import {Table} from 'react-bootstrap';
 import api from '../../services/api';
 import mostrarTecnicos from '../mostrarTecnicos';
 import Tecnico from '../mostrarTecnicos';
@@ -99,7 +99,9 @@ const [mesChamadoE, setMesChamadoE] = useState([]);
                     return;
                 }
                 setErroMensagem('');
-
+                if(numeroChamado.includes(numeroChamado)){
+                    console.log("já existe esse numer");
+                }
                 try {
                     const resposta = await api.post('chamado', parametros);
                     mostrarChamados('');

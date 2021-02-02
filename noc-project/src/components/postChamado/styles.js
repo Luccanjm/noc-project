@@ -70,5 +70,4 @@ width: 150px;
 height:50px;
 border-radius:5px;
 border:none;
-background: #B85309;
-`;
+background: linear-gradient(120deg, rgb(0, 175, 239), rgb(163, 205, 77));`;
