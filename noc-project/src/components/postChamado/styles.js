@@ -37,3 +37,38 @@ export const ContainerButton = styled.div`
 margin-right:20px;
 
 `;
+export const FormPost = styled.form`
+display:flex;
+`;
+export const Infos = styled.div`
+margin-top:5px;
+`;
+
+export const Input = styled.input`
+width: auto;
+height:50px;
+border-radius:5px;
+border:none;
+margin-right:5px;
+padding:10px;
+`;
+
+export const Select = styled.select`
+width: auto;
+height:50px;
+border-radius:5px;
+border:none;
+margin-right:5px;
+
+`;
+export const Option = styled.option`
+
+
+`;
+export const ButtonSubmit = styled.button`
+width: 150px;
+height:50px;
+border-radius:5px;
+border:none;
+background: #B85309;
+`;

@@ -4,6 +4,8 @@ import {Header, Main, Footer, ContainerTable, ContainerImg, ContainerGeral, List
 import logoBranco from '../../assets/logo.png';
 
 import ExibirChamados from '../../components/mostrarChamados';
+import PostChamado from '../../components/postChamado';
+
 
 const Chamados = () =>{
     <>
@@ -18,7 +20,7 @@ const Chamados = () =>{
                 </ContainerImg>
             <Lista>
                 <LinhaLista><LinkLista href="#">Chamados</LinkLista></LinhaLista>
-                <LinhaLista><LinkLista href="#">Criar Chamado</LinkLista></LinhaLista>
+                <LinhaLista><LinkLista href="/post">Criar Chamado</LinkLista></LinhaLista>
                 <LinhaLista><LinkLista href="#">Gerar Relatório</LinkLista></LinhaLista>
                 <LinhaLista><LinkLista href="#">Criar Perfil Técnico</LinkLista></LinhaLista>
                 <li><Dropdown>
@@ -38,7 +40,8 @@ const Chamados = () =>{
         </Header>
         <Main>
             <ContainerTable>
-               <ExibirChamados id="ExibirChamados"></ExibirChamados>
+               {/* <ExibirChamados id="ExibirChamados"></ExibirChamados> */}
+               <PostChamado id="PostChamado"></PostChamado>
 </ContainerTable>   
 </Main>
 <Footer>

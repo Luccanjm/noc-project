@@ -4,8 +4,8 @@ import React, {
     useEffect
 } from 'react';
 
-import {ContainerTable, ContainerButton, ContainerCard} from './styles';
-import {Table,Container, Row, Col,Card, Form, InputGroup,FormControl,Button } from 'react-bootstrap';
+import {ContainerTable, ContainerButton, ContainerCard, FormPost, Infos,Input, Select, Option, ButtonSubmit} from './styles';
+import {Table,Container, Row, Col,Card, Form, InputGroup,FormControl,Button} from 'react-bootstrap';
 import api from '../../services/api';
 import mostrarTecnicos from '../mostrarTecnicos';
 import Tecnico from '../mostrarTecnicos';
@@ -43,7 +43,7 @@ const [mesChamadoE, setMesChamadoE] = useState([]);
                 const resposta = await api.get('chamado');
                 setChamadosE(resposta.data);
             } catch (error) {
-                console.log("Erro na busca da API", error);
+                console.log("Erro na busca da API(mostrarChamados)", error);
                 setErroMensagem(error);
             }
         },[chamadoE]
@@ -64,13 +64,37 @@ const [mesChamadoE, setMesChamadoE] = useState([]);
                     sistema: sistema,
                     requerenteChamado: requerenteChamado,
                     tecnicoChamado: tecnicoChamado,
-                    statuschamado: statusChamado,
+                    statusChamado: statusChamado,
                     valorBoleto: valorBoleto,
                     mesChamado: mesChamado
                 }
     
-                if (!numeroChamado || !sistema || !requerenteChamado || !tecnicoChamado || !statusChamado || !valorBoleto || !mesChamado) {
-                    setErroMensagem('Campos vazios');
+                if (!numeroChamado ) {
+                    setErroMensagem('Campos numero chamado vazio');
+                    console.log(erroMensagem);
+                    return;
+                }else if(!mesChamado){
+                    setErroMensagem('Campo mes chamado vazio!');
+                    console.log(erroMensagem);
+                    return;
+                }else if(!requerenteChamado){
+                    setErroMensagem('Campo requerente chamado vazio!');
+                    console.log(erroMensagem);
+                    return;
+                }else if(!tecnicoChamado){
+                    setErroMensagem('Campo tecnico chamado vazio!');
+                    console.log(erroMensagem);
+                    return;
+                }else if(!statusChamado){
+                    setErroMensagem('Campo status chamado vazio!');
+                    console.log(erroMensagem);
+                    return;
+                }else if(!valorBoleto){
+                    setErroMensagem('Campo valor boleto vazio!');
+                    console.log(erroMensagem);
+                    return;
+                }else if(!sistema){
+                    setErroMensagem('Campo sistema vazio!');
                     console.log(erroMensagem);
                     return;
                 }
@@ -88,7 +112,7 @@ const [mesChamadoE, setMesChamadoE] = useState([]);
                     mesChamado('');
                     console.log("Novo chamado adicionado com sucesso!");
                 } catch (error) {
-                    setErroMensagem('Erro na criação');
+                    setErroMensagem('Erro na criação api(adicionarChamado)');
                     
                 }
             }, [mostrarChamados, numeroChamado, sistema, requerenteChamado, tecnicoChamado, statusChamado, valorBoleto, mesChamado]
@@ -102,7 +126,7 @@ const [mesChamadoE, setMesChamadoE] = useState([]);
                     sistema: sistema,
                     requerenteChamado: requerenteChamado,
                     tecnicoChamado: tecnicoChamado,
-                    statuschamado: statusChamado,
+                    statusChamado: statusChamado,
                     valorBoleto: valorBoleto,
                     mesChamado: mesChamado
             }
@@ -145,7 +169,7 @@ const mostrarMesChamado = useCallback(
             const resposta = await api.get('mesChamado');
             setMesChamadoE(resposta.data);
         } catch (error) {
-            console.log("Erro na busca da API", error);
+            console.log("Erro na busca da API(mostrarMesChamado)", error);
             setErroMensagem(error);
         }
     },[mesChamadoE]
@@ -162,7 +186,7 @@ const mostrarMesChamado = useCallback(
                 const resposta = await api.get('tecnico');
                 setTecnicos(resposta.data);
             } catch (error) {
-                console.log("Erro na busca da API", error);
+                console.log("Erro na busca da API(mostrarTecnicos)", error);
                 setErroMensagem(error);
             }
         },[tecnicos]
@@ -179,7 +203,7 @@ const mostrarSistemas = useCallback(
             const resposta = await api.get('sistema');
             setSistemas(resposta.data);
         } catch (error) {
-            console.log("Erro na busca da API", error);
+            console.log("Erro na busca da API(mostrarSistema)", error);
             setErroMensagem(error);
         }
     },[sistemas]
@@ -196,7 +220,7 @@ const mostrarStatus = useCallback(
             const resposta = await api.get('statusChamado');
             setStatusChamadoE(resposta.data);
         } catch (error) {
-            console.log("Erro na busca da API", error);
+            console.log("Erro na busca da API(mostrarStatus)", error);
             setErroMensagem(error);
         }
     },[statusChamadoE]
@@ -209,11 +233,82 @@ const mostrarStatus = useCallback(
     return(
         <>
         <ContainerTable>
+            <FormPost
+            onSubmit={(e) => adicionarChamado(e)}>
+        <Infos>
+          <Input
+            value={numeroChamado}
+            onChange={(e) => setNumeroChamado(e.target.value)}
+            type="number"
+            placeholder="Número Chamado"
+          />
+
             
+        <Select onChange={(e) => setMesChamado(e.target.value)}>  
+                        { mesChamadoE.map(
+                                        (item) =>
+                                        <Option value={chamadoE.mesChamado}>{item.nomeMes}</Option>
+                                        )}
+                </Select>
+                
+        <Select onChange={(e) => setStatusChamado(e.target.value)}>  
+                        { statusChamadoE.map(
+                                        (item) =>
+                                        <Option value={chamadoE.statusChamado}>{item.status}</Option>
+                                        )}
+                </Select>
+          
+          {/* <input
+            value={tecnicoChamado}
+            onChange={(e) => setTecnicoChamado(e.target.value)}
+            placeholder="Técnico Chamado"
+          /> */}
+
+        <Select onChange={(e) => setTecnicoChamado(e.target.value)}>  
+                { tecnicos.map(
+                                (item) =>
+                                <Option value={chamadoE.tecnicoChamado}>{item.nome}</Option>
+                                )}
+        </Select>
+    
+           <Select onChange={(e) => setSistema(e.target.value)}>  
+            { sistemas.map(
+                                 (item) =>
+                                <Option value={chamadoE.sistema}>{item.nome}</Option>
+                                )}
+        </Select>
+
+{/*                
+          <input
+            value={sistema}
+            type="text"
+            onChange={(e) => setSistema(e.target.value)}
+            placeholder="sistema"
+          /> */}
+          <Input
+            value={requerenteChamado}
+            type="text"
+            onChange={(e) => setRequerenteChamado(e.target.value)}
+            placeholder="Requerente Chamado"
+          />
+        
+        <Input
+            value={valorBoleto}
+            type="number"
+            onChange={(e) => setValorBoleto(e.target.value)}
+            placeholder="Valor Boleto"
+          />
+        <ButtonSubmit type="submit" id="link-continuar">
+          Adicionar
+        </ButtonSubmit>
+        </Infos>
+      
+            </FormPost>
    
-{/* 
+ 
  <Table responsive="sm">
     <thead>
+        <th>ID</th>
         <th>Chamado </th>
         <th>Mês</th>
         <th>Status</th>
@@ -226,6 +321,7 @@ const mostrarStatus = useCallback(
     <tbody>
         {chamadoE.map((item) =>
             <tr>
+                <td> {item.id}</td>
                 <td> {item.numeroChamado}</td>
                 <td> {item.mesChamado}</td>
                 <td> {item.statusChamado}</td>
@@ -240,7 +336,7 @@ const mostrarStatus = useCallback(
         )}
     </tbody> 
                 
-</Table> */}
+</Table> 
       
 
 

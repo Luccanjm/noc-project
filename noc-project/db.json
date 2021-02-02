@@ -1,169 +1,238 @@
 {
-    
-    "chamado":[
-        {
-            "id":1,
-            "numeroChamado": 435689,
-            "sistema": "NOC",
-            "requerenteChamado":"luana.silva",
-            "tecnicoChamado": "lucca.martinelli",
-            "statusChamado": "Processando",
-            "valorBoleto": 350.00,
-            "mesChamado":"janeiro"
-        },
-        {
-            "id":2,
-            "numeroChamado": 778854,
-            "sistema": "AIR",
-            "requerenteChamado":"gabriel.oliveira",
-            "tecnicoChamado": "isabella.couto",
-            "statusChamado": "Pendente",
-            "valorBoleto": 250.00,
-            "mesChamado":"janeiro"
-        },
-        {
-            "id":3,
-            "numeroChamado": 635322,
-            "sistema": "SYDLE",
-            "requerenteChamado":"juliana.andrade",
-            "tecnicoChamado": "sergio.ribeiro",
-            "statusChamado": "Finalizado",
-            "valorBoleto": 150.00,
-            "mesChamado":"dezembro"
-        }
-    ],
-    "tecnico":[
-        {
-            "id":1,
-            "nome":"lucca.martinelli"
-        },
-        {
-            "id":2,
-            "nome":"isabella.couto"
-        },
-        {
-            "id":3,
-            "nome":"lucas.lopes"
-        },
-        {
-            "id":4,
-            "nome":"douglas.silva"
-        },
-        {
-            "id":5,
-            "nome":"lais.moura"
-        },
-        {
-            "id":6,
-            "nome":"bruno.barros"
-        },
-        {
-            "id":7,
-            "nome":"raphael.medeiros"
-        },
-        {
-            "id":8,
-            "nome":"sergio.ribeiro"
-        },
-        {
-            "id":9,
-            "nome":"anderson.silva"
-        },
-        {
-            "id":10,
-            "nome":"rodrigo.cogliatti"
-        }
-    ],
-    "sistema":[
-        {
-            "id":1,
-            "nome":"AIR"
-        },
-        {
-            "id":2,
-            "nome":"SYDLE"
-        },
-        {
-            "id":3,
-            "nome":"NOC"
-        },
-        {
-            "id":4,
-            "nome":"GLPI"
-        }
-    ],
-    "statusChamado":[
-        {
-        "id":1,
-        "status":"Processando"
-        },
-        {
-            "id":2,
-            "status":"Pendente"
-            },
-            {
-                "id":3,
-                "status":"Finalizado"
-                }
-    ],
-    "mesChamado":[
-        {
-        "id":1,
-        "nomeMes":"Janeiro"
-        },
-        {
-            "id":2,
-            "nomeMes":"Fevereiro"
-            },
-            {
-                "id":3,
-                "nomeMes":"Março"
-                }
-                ,
-            {
-                "id":4,
-                "nomeMes":"Abril"
-                }
-                ,
-            {
-                "id":5,
-                "nomeMes":"Maio"
-                }
-                ,
-            {
-                "id":6,
-                "nomeMes":"Junho"
-                }
-                ,
-            {
-                "id":7,
-                "nomeMes":"Julho"
-                }
-                ,
-            {
-                "id":8,
-                "nomeMes":"Agosto"
-                }
-                ,
-            {
-                "id":9,
-                "nomeMes":"Setembro"
-                }
-                ,
-            {
-                "id":10,
-                "nomeMes":"Outubro"
-                }
-                ,
-            {
-                "id":11,
-                "nomeMes":"Novembro"
-                }
-                ,
-            {
-                "id":12,
-                "nomeMes":"Dezembro"
-                }
-
-    ]
+  "chamado": [
+    {
+      "id": 1,
+      "numeroChamado": 435689,
+      "sistema": "NOC",
+      "requerenteChamado": "luana.silva",
+      "tecnicoChamado": "lucca.martinelli",
+      "statusChamado": "Processando",
+      "valorBoleto": 350,
+      "mesChamado": "janeiro"
+    },
+    {
+      "id": 2,
+      "numeroChamado": 778854,
+      "sistema": "AIR",
+      "requerenteChamado": "gabriel.oliveira",
+      "tecnicoChamado": "isabella.couto",
+      "statusChamado": "Pendente",
+      "valorBoleto": 250,
+      "mesChamado": "janeiro"
+    },
+    {
+      "id": 3,
+      "numeroChamado": 635322,
+      "sistema": "SYDLE",
+      "requerenteChamado": "juliana.andrade",
+      "tecnicoChamado": "sergio.ribeiro",
+      "statusChamado": "Finalizado",
+      "valorBoleto": 150,
+      "mesChamado": "dezembro"
+    },
+    {
+      "numeroChamado": "212313",
+      "sistema": "AIR",
+      "requerenteChamado": "luana.silva",
+      "tecnicoChamado": "lucca.martinelli",
+      "statusChamado": "Pendente",
+      "valorBoleto": "52",
+      "mesChamado": "fevereiro",
+      "id": 4
+    },
+    {
+      "numeroChamado": "54548",
+      "sistema": "AIR",
+      "requerenteChamado": "juliana.silva",
+      "tecnicoChamado": "isabella.couto",
+      "statusChamado": "Pendente",
+      "valorBoleto": "121",
+      "mesChamado": "dezembro",
+      "id": 5
+    },
+    {
+      "numeroChamado": "324234",
+      "sistema": "NOC",
+      "requerenteChamado": "sergio.nov",
+      "tecnicoChamado": "sergio.ribeiro",
+      "statusChamado": "Pendente",
+      "valorBoleto": "10",
+      "mesChamado": "janeiro",
+      "id": 6
+    },
+    {
+      "numeroChamado": "213123",
+      "sistema": "NOC",
+      "requerenteChamado": "kaique",
+      "tecnicoChamado": "sergio.ribeiro",
+      "statusChamado": "Pendente",
+      "valorBoleto": "0",
+      "mesChamado": "fevereiro",
+      "id": 7
+    },
+    {
+      "numeroChamado": "23449",
+      "sistema": "GLPI",
+      "requerenteChamado": "ruan",
+      "tecnicoChamado": "isabella.couto",
+      "statusChamado": "Pendente",
+      "valorBoleto": "34",
+      "mesChamado": "janeiro",
+      "id": 8
+    },
+    {
+      "numeroChamado": "384723",
+      "sistema": "NOC",
+      "requerenteChamado": "gabriel",
+      "tecnicoChamado": "lais.moura",
+      "statusChamado": "Finalizado",
+      "valorBoleto": "10",
+      "mesChamado": "Agosto",
+      "id": 9
+    },
+    {
+      "numeroChamado": "23424",
+      "sistema": "SYDLE",
+      "requerenteChamado": "joaquina",
+      "tecnicoChamado": "douglas.silva",
+      "statusChamado": "Pendente",
+      "valorBoleto": "10",
+      "mesChamado": "Novembro",
+      "id": 10
+    },
+    {
+      "numeroChamado": "234324",
+      "sistema": "NOC",
+      "requerenteChamado": "gabriel",
+      "tecnicoChamado": "rodrigo.cogliatti",
+      "statusChamado": "Finalizado",
+      "valorBoleto": "22.25",
+      "mesChamado": "Abril",
+      "id": 11
+    }
+  ],
+  "tecnico": [
+    {
+      "id": 1,
+      "nome": "lucca.martinelli"
+    },
+    {
+      "id": 2,
+      "nome": "isabella.couto"
+    },
+    {
+      "id": 3,
+      "nome": "lucas.lopes"
+    },
+    {
+      "id": 4,
+      "nome": "douglas.silva"
+    },
+    {
+      "id": 5,
+      "nome": "lais.moura"
+    },
+    {
+      "id": 6,
+      "nome": "bruno.barros"
+    },
+    {
+      "id": 7,
+      "nome": "raphael.medeiros"
+    },
+    {
+      "id": 8,
+      "nome": "sergio.ribeiro"
+    },
+    {
+      "id": 9,
+      "nome": "anderson.silva"
+    },
+    {
+      "id": 10,
+      "nome": "rodrigo.cogliatti"
+    }
+  ],
+  "sistema": [
+    {
+      "id": 1,
+      "nome": "AIR"
+    },
+    {
+      "id": 2,
+      "nome": "SYDLE"
+    },
+    {
+      "id": 3,
+      "nome": "NOC"
+    },
+    {
+      "id": 4,
+      "nome": "GLPI"
+    }
+  ],
+  "statusChamado": [
+    {
+      "id": 1,
+      "status": "Processando"
+    },
+    {
+      "id": 2,
+      "status": "Pendente"
+    },
+    {
+      "id": 3,
+      "status": "Finalizado"
+    }
+  ],
+  "mesChamado": [
+    {
+      "id": 1,
+      "nomeMes": "Janeiro"
+    },
+    {
+      "id": 2,
+      "nomeMes": "Fevereiro"
+    },
+    {
+      "id": 3,
+      "nomeMes": "Março"
+    },
+    {
+      "id": 4,
+      "nomeMes": "Abril"
+    },
+    {
+      "id": 5,
+      "nomeMes": "Maio"
+    },
+    {
+      "id": 6,
+      "nomeMes": "Junho"
+    },
+    {
+      "id": 7,
+      "nomeMes": "Julho"
+    },
+    {
+      "id": 8,
+      "nomeMes": "Agosto"
+    },
+    {
+      "id": 9,
+      "nomeMes": "Setembro"
+    },
+    {
+      "id": 10,
+      "nomeMes": "Outubro"
+    },
+    {
+      "id": 11,
+      "nomeMes": "Novembro"
+    },
+    {
+      "id": 12,
+      "nomeMes": "Dezembro"
+    }
+  ]
 }
