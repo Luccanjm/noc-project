@@ -3,12 +3,14 @@ import React, {
     useState,
     useEffect
 } from 'react';
+import { FiTrash } from "react-icons/fi";
 
-import {ContainerTable, ContainerPost, FormPost, Infos,Input, Select, Option, ButtonSubmit} from './styles';
-import {Table} from 'react-bootstrap';
+import {ContainerTable,BoxIcon, FormPost, Infos,Input, Select, Option, ButtonSubmit} from './styles';
+import {Table, Alert} from 'react-bootstrap';
 import api from '../../services/api';
 import mostrarTecnicos from '../mostrarTecnicos';
 import Tecnico from '../mostrarTecnicos';
+import swal from 'sweetalert';
 
 const PostChamado = () => {
 // chamados 
@@ -21,19 +23,15 @@ const PostChamado = () => {
     const [valorBoleto, setValorBoleto] = useState();
     const [mesChamado, setMesChamado] = useState('');
     const [erroMensagem, setErroMensagem] = useState('');
-    // ChamadoId
+// ChamadoId
     const [chamadoId, setChamadoId] = useState({});
-
 // tecnicos
     const [tecnicos, setTecnicos] = useState([]);
-    const [novoTecnico, setNovoTecnico] = useState('');
 // sistemas
     const [sistemas, setSistemas] = useState([]);
-    const [novoSistema, setNovoSistema] = useState('');
 // statusChamado
     const [statusChamadoE, setStatusChamadoE] = useState([]);
-    const [novoStatus, setStatus] = useState('');
-//MesChamado
+// MesChamado
 const [mesChamadoE, setMesChamadoE] = useState([]);
 
 // -------------------------------------------------------------------
@@ -109,7 +107,8 @@ const [mesChamadoE, setMesChamadoE] = useState([]);
                         ? console.log("número repetido", naoCria = 1)
                         : console.log("Criado com sucesso", naoCria);
                         if(naoCria === 0){
-                        
+                    swal("Sucesso", "Chamado criado com sucesso!", "success");
+
                     const resposta = await api.post('chamado', parametros);
                     mostrarChamados('');
                     setNumeroChamado('');
@@ -119,11 +118,11 @@ const [mesChamadoE, setMesChamadoE] = useState([]);
                     setStatusChamado('');
                     valorBoleto('');
                     mesChamado('');
-                    console.log("Novo chamado adicionado com sucesso!");
+                    // console.log("Novo chamado adicionado com sucesso!");
 
                         }else{
-                            alert("Número de chamado já existente.")
-                        }
+                            swal("Atenção", "Número de chamado já existente!", "warning");
+                                            }
                 } catch (error) {
                     setErroMensagem('Erro na criação api(adicionarChamado)');
                     
@@ -163,19 +162,7 @@ const [mesChamadoE, setMesChamadoE] = useState([]);
             }
         }, [mostrarChamados, chamadoE]
     );
-//ChamadoId-------------------------------------------------------------------------------
-const mostrarChamadoId = useCallback(
-    async(idChamado)=>{
-        try {
-            const resposta = await api.get(`chamado/${idChamado}`);
-            setChamadoId(resposta.data);
-            console.log("resposta ChamadoId", resposta);
-        } catch (error) {
-            console.log("Erro na busca API ChamadoId",error);
-            setErroMensagem(error)
-        }
-    },[]
-);
+
 // MesChamado ------------------------------------------------------------------------------------------
   
 const mostrarMesChamado = useCallback(
@@ -248,6 +235,7 @@ const mostrarStatus = useCallback(
     return(
         <>
         <ContainerTable>
+     
             <FormPost
             onSubmit={(e) => adicionarChamado(e)}>
         <Infos>
@@ -255,8 +243,7 @@ const mostrarStatus = useCallback(
             value={numeroChamado}
             onChange={(e) => setNumeroChamado(e.target.value)}
             type="number"
-            placeholder="Número Chamado"
-          />
+            placeholder="Número Chamado"/>
 
             
         <Select onChange={(e) => setMesChamado(e.target.value)}>  
@@ -273,11 +260,7 @@ const mostrarStatus = useCallback(
                                         )}
                 </Select>
           
-          {/* <input
-            value={tecnicoChamado}
-            onChange={(e) => setTecnicoChamado(e.target.value)}
-            placeholder="Técnico Chamado"
-          /> */}
+  
 
         <Select onChange={(e) => setTecnicoChamado(e.target.value)}>  
                 { tecnicos.map(
@@ -331,6 +314,7 @@ const mostrarStatus = useCallback(
         <th>Sistema</th>
         <th>Requerente</th>
         <th>Valor do boleto</th>
+        <th>#</th>
     </thead>
     
     <tbody>
@@ -344,7 +328,7 @@ const mostrarStatus = useCallback(
                 <td> {item.sistema}</td>
                 <td> {item.requerenteChamado}</td>
                 <td> {item.valorBoleto}</td>
-                
+                <td><BoxIcon><FiTrash size={20}/></BoxIcon></td>
                 
             </tr>
                             

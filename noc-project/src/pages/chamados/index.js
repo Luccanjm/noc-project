@@ -1,10 +1,11 @@
 import React from 'react';
-import {Nav, Dropdown } from 'react-bootstrap';
-import {Header, Main, Footer, ContainerTable, ContainerImg, ContainerGeral, Lista, LinhaLista, LinkLista} from './styles';
+import {Nav, Dropdown} from 'react-bootstrap';
+import {Header, Main, ContainerTable, ContainerImg, ContainerGeral, Lista, LinhaLista, LinkLista,Button} from './styles';
 import logoBranco from '../../assets/logo.png';
 
 import ExibirChamados from '../../components/mostrarChamados';
 import PostChamado from '../../components/postChamado';
+import Footer from '../../components/footer';
 
 
 const Chamados = () =>{
@@ -19,12 +20,12 @@ const Chamados = () =>{
                     <img src={logoBranco} alt></img>
                 </ContainerImg>
             <Lista>
-                <LinhaLista><LinkLista href="#">Chamados</LinkLista></LinhaLista>
-                <LinhaLista><LinkLista href="/post">Criar Chamado</LinkLista></LinhaLista>
-                <LinhaLista><LinkLista href="#">Gerar Relatório</LinkLista></LinhaLista>
-                <LinhaLista><LinkLista href="#">Criar Perfil Técnico</LinkLista></LinhaLista>
-                <li><Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <LinhaLista><Button><LinkLista href="#">Chamados</LinkLista></Button></LinhaLista>
+                <LinhaLista><Button><LinkLista href="/post">Criar Chamado</LinkLista></Button></LinhaLista>
+                <LinhaLista><Button><LinkLista href="#">Gerar Relatório</LinkLista></Button></LinhaLista>
+                <LinhaLista><Button><LinkLista href="#">Criar Perfil Técnico</LinkLista></Button></LinhaLista>
+                <LinhaLista id="dropdownlista"><Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic" >
                             lucca.martinelli
                         </Dropdown.Toggle>
 
@@ -33,7 +34,7 @@ const Chamados = () =>{
 
                         </Dropdown.Menu>
                     </Dropdown>
-                </li>
+                </LinhaLista>
             </Lista>
      
                 </Nav>
@@ -44,9 +45,8 @@ const Chamados = () =>{
                <PostChamado id="PostChamado"></PostChamado>
 </ContainerTable>   
 </Main>
-<Footer>
-    <p>&copy; Desenvolvido pelo NOC | Sumicity</p>
-</Footer>
+<Footer id="footer"></Footer>
+    
 </ContainerGeral>
 );
 }

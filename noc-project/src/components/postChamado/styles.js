@@ -1,5 +1,8 @@
 import styled from 'styled-components';
-export const Container = styled.div`
+export const BoxIcon = styled.div`
+    cursor:pointer;
+    width:20px;
+    height:20px;
 `;
 
 export const ContainerTable = styled.div`
@@ -31,8 +34,7 @@ display:block;
 
 `;
 
-export const ContainerCard = styled.div`
-`;
+
 export const ContainerButton = styled.div`
 margin-right:20px;
 
@@ -51,6 +53,10 @@ border-radius:5px;
 border:none;
 margin-right:5px;
 padding:10px;
+text-align: center;
+
+
+
 `;
 
 export const Select = styled.select`
@@ -59,6 +65,7 @@ height:50px;
 border-radius:5px;
 border:none;
 margin-right:5px;
+text-align: center;
 
 `;
 export const Option = styled.option`

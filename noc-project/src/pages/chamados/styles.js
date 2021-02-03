@@ -14,49 +14,51 @@ grid-template-areas: "h h h"
 export const Header = styled.header`
 grid-area:h;
 background: linear-gradient(120deg, rgb(0, 175, 239), rgb(163, 205, 77));
-display:flex;
+
 img{
     width:100px;
-    margin-left:20%;
+    margin-left:calc((5 / 16) * 100%);
 }
 .nav-item{
-    margin-left:50px;
     margin-top:1%;
     
 }
-ul{
-	display: flex;
-    align-items: center;
-    gap:30px;
-}
-li:first-child{
-    margin-left:90px;
-}
-li:last-child{
-
-}
-ul li{
-list-style: none;
-margin: 0;
-padding: 0;
 
 
-}
 `;
 export const Lista = styled.ul`
+    display:flex;
+    overflow: hidden;
+    align-items: center;
+    gap:30px;
+    list-style-type: none;
+
+li:first-child{
+    margin-left:calc((1 / 16) * 100%);
+
+    }
+    a:hover{
+        color: green; 
+        text-decoration:none;
+    } 
 `;
 
 export const LinhaLista = styled.li`
 `;
 
-export const LinkLista = styled.a`
-text-decoration:none;
-color:inherit;
-LinkLista:hover{
-    color:white;
-}
+export const Button = styled.button`
+width: 150px;
+height:50px;
+border-radius:5px;
+border:none;
+background: #a3cd4d;
 `;
 
+export const LinkLista = styled.a`
+    text-decoration:none;
+    color:white;
+
+`;
 export const ContainerImg = styled.div`
 `;
 export const Main = styled.main`
@@ -67,10 +69,5 @@ display:flex;
 justify-content:center;
 
 `;
-export const Footer = styled.footer`
-grid-area:f;
-display:flex;
-justify-content:center;
-`;
-// export const 
+
 
