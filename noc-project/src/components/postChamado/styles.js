@@ -4,35 +4,31 @@ export const BoxIcon = styled.div`
     width:20px;
     height:20px;
 `;
-
-export const ContainerTable = styled.div`
-display:block;
-
+export const Container = styled.div`
 .table{
-    background:#c4c4cc;
+    background:rgba(255, 255, 255, 0.8);
     width:1100px;
     margin-top:15px;
     text-align:center;
     border-radius: 0 0 15px 15px;
     border: none;
-
 }
-.card-detalhes {
-    width: 1100px;
-    text-align: center;
-    justify-content: center;
-    border: none;
-    // padding: 30px 10px;
-    color:black;
-    background:#c4c4cc;
-    border-radius: 15px;
-        
+.table-responsive-sm{
+    display:flex;
+    justify-content:center;
 }
-// .titulo{
-//     margin-right: 10px;
-// }
+#minhaTabela tr:hover td{
+  background-color: #145E7D;
+  color:white;
+  border:1px solid white;
+}
 
+#minhaTabela tr.selecionado td{
+  background-color: #aff7ff;
+}
 `;
+
+
 
 
 export const ContainerButton = styled.div`
@@ -42,9 +38,6 @@ margin-right:20px;
 export const FormPost = styled.form`
 display:flex;
 `;
-export const Infos = styled.div`
-margin-top:5px;
-`;
 
 export const Input = styled.input`
 width: auto;
@@ -53,8 +46,7 @@ border-radius:5px;
 border:none;
 margin-right:5px;
 padding:10px;
-text-align: center;
-
+background:rgba(255, 255, 255, 0.8);
 
 
 `;
@@ -65,16 +57,15 @@ height:50px;
 border-radius:5px;
 border:none;
 margin-right:5px;
-text-align: center;
+background:rgba(255, 255, 255, 0.8);
 
 `;
 export const Option = styled.option`
-
-
 `;
 export const ButtonSubmit = styled.button`
 width: 150px;
 height:50px;
 border-radius:5px;
 border:none;
-background: linear-gradient(120deg, rgb(0, 175, 239), rgb(163, 205, 77));`;
+background: linear-gradient(120deg, rgb(0, 175, 239), rgb(163, 205, 77));
+`;

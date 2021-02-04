@@ -28,7 +28,7 @@ img{
 `;
 export const Lista = styled.ul`
     display:flex;
-    overflow: hidden;
+    overflow: inherit;
     align-items: center;
     gap:30px;
     list-style-type: none;
@@ -38,12 +38,17 @@ li:first-child{
 
     }
     a:hover{
-        color: green; 
+        color: #145E7D; 
         text-decoration:none;
     } 
+    .btn-success{
+        background-color: rgb(0, 175, 239);
+    }
 `;
 
 export const LinhaLista = styled.li`
+
+
 `;
 
 export const Button = styled.button`
@@ -51,23 +56,21 @@ width: 150px;
 height:50px;
 border-radius:5px;
 border:none;
-background: #a3cd4d;
+background: #28a745;
+max-width:150px;
 `;
 
 export const LinkLista = styled.a`
     text-decoration:none;
-    color:white;
+    color: #fff;
 
 `;
 export const ContainerImg = styled.div`
 `;
 export const Main = styled.main`
 grid-area:m;
-`;
-export const ContainerTable = styled.div`
 display:flex;
 justify-content:center;
-
 `;
 
 

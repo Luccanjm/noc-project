@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 import { FiTrash } from "react-icons/fi";
 
-import {ContainerTable,BoxIcon, FormPost, Infos,Input, Select, Option, ButtonSubmit} from './styles';
+import {Container,BoxIcon, FormPost,Input, Select, Option, ButtonSubmit} from './styles';
 import {Table, Alert} from 'react-bootstrap';
 import api from '../../services/api';
 import mostrarTecnicos from '../mostrarTecnicos';
@@ -23,6 +23,7 @@ const PostChamado = () => {
     const [valorBoleto, setValorBoleto] = useState();
     const [mesChamado, setMesChamado] = useState('');
     const [erroMensagem, setErroMensagem] = useState('');
+    
 // ChamadoId
     const [chamadoId, setChamadoId] = useState({});
 // tecnicos
@@ -33,7 +34,8 @@ const PostChamado = () => {
     const [statusChamadoE, setStatusChamadoE] = useState([]);
 // MesChamado
 const [mesChamadoE, setMesChamadoE] = useState([]);
-
+//--------------------------------------------------------------
+const [items, setItems] = useState([]);
 // -------------------------------------------------------------------
     const mostrarChamados = useCallback(
         async() => {
@@ -66,36 +68,53 @@ const [mesChamadoE, setMesChamadoE] = useState([]);
                     valorBoleto: valorBoleto,
                     mesChamado: mesChamado
                 }
-    
+                if(!numeroChamado && !mesChamado && !statusChamado && !tecnicoChamado && !sistema){
+                    setErroMensagem('Campos vazios');
+                    swal("Info", "Campos vazios, por favor preencha os campos.", "info");
+                    console.log(erroMensagem);
+                    return;
+                }
                 if (!numeroChamado ) {
                     setErroMensagem('Campos numero chamado vazio');
+                    swal("Info", "Campo número chamado vazio, por favor preencha o número do chamado para adicionar a tabela.", "info");
                     console.log(erroMensagem);
                     return;
                 }else if(!mesChamado){
-                    setErroMensagem('Campo mes chamado vazio!');
-                    console.log(erroMensagem);
-                    return;
-                }else if(!requerenteChamado){
-                    setErroMensagem('Campo requerente chamado vazio!');
-                    console.log(erroMensagem);
-                    return;
-                }else if(!tecnicoChamado){
-                    setErroMensagem('Campo tecnico chamado vazio!');
+                    setErroMensagem('Campo mês chamado vazio, por favor preencha o mês do chamado para adicionar a tabela.');
+                    swal("Info", "Campo mês vazio!", "info");
                     console.log(erroMensagem);
                     return;
                 }else if(!statusChamado){
                     setErroMensagem('Campo status chamado vazio!');
-                    console.log(erroMensagem);
-                    return;
-                }else if(!valorBoleto){
-                    setErroMensagem('Campo valor boleto vazio!');
-                    console.log(erroMensagem);
-                    return;
-                }else if(!sistema){
-                    setErroMensagem('Campo sistema vazio!');
+                    swal("Info", "Campo status vazio, por favor preencha o status do chamado para adicionar a tabela.", "info");
                     console.log(erroMensagem);
                     return;
                 }
+             
+                else if(!tecnicoChamado){
+                    setErroMensagem('Campo tecnico chamado vazio!');
+                    swal("Info", "Campo técnico chamado vazio, por favor preencha o técnico do chamado para adicionar a tabela.", "info");
+                    console.log(erroMensagem);
+                    return;
+                }
+                else if(!sistema){
+                    setErroMensagem('Campo sistema vazio!');
+                     swal("Info", "Campo sistema vazio, por favor preencha o sistema do chamado para adicionar a tabela.", "info");
+                    console.log(erroMensagem);
+                    return;
+                }
+                // else if(!requerenteChamado){
+                //     setErroMensagem('Campo requerente chamado vazio!');
+                //     swal("Info", "Campo requerente chamado vazio!", "info");
+                //     console.log(erroMensagem);
+                //     return;
+                // }
+                // else if(!valorBoleto){
+                //     setErroMensagem('Campo valor boleto vazio!');
+                //     swal("Info", "Campo valor vazio!", "info");
+                //     console.log(erroMensagem);
+                //     return;
+                // }
                 setErroMensagem('');
            
                 try {
@@ -152,16 +171,26 @@ const [mesChamadoE, setMesChamadoE] = useState([]);
         }
     );
 
-    const removerChamado = useCallback(
-        async(id) => {
-            try {
-                await api.delete(`chamado/${id}`);
-                mostrarChamados();
-            } catch (error) {
-                setErroMensagem(error);
-            }
-        }, [mostrarChamados, chamadoE]
-    );
+
+    // const removerChamado = useCallback(
+    //     async(id) => {
+    //         try {
+    //             await api.delete(`chamado/${id}`);
+    //             console.log("Chamado removido.")
+    //             mostrarChamados();
+    //         } catch (error) {
+    //             setErroMensagem(error);
+    //         }
+    //     }, [mostrarChamados, chamadoE]
+    // );
+
+    const removeChamados = useCallback(
+        async (chamadoE) => {
+          await api.delete(`chamado/${chamadoE.id}`);
+    
+          mostrarChamados();
+        },[mostrarChamados],
+      );
 
 // MesChamado ------------------------------------------------------------------------------------------
   
@@ -231,14 +260,12 @@ const mostrarStatus = useCallback(
     useEffect(() =>{
         mostrarStatus();
     }, [mostrarStatus])
-
+  
     return(
         <>
-        <ContainerTable>
-     
+        <Container>
             <FormPost
             onSubmit={(e) => adicionarChamado(e)}>
-        <Infos>
           <Input
             value={numeroChamado}
             onChange={(e) => setNumeroChamado(e.target.value)}
@@ -247,6 +274,7 @@ const mostrarStatus = useCallback(
 
             
         <Select onChange={(e) => setMesChamado(e.target.value)}>  
+            <Option value="" selected disabled hidden>Mês</Option>
                         { mesChamadoE.map(
                                         (item) =>
                                         <Option value={chamadoE.mesChamado}>{item.nomeMes}</Option>
@@ -254,6 +282,8 @@ const mostrarStatus = useCallback(
                 </Select>
                 
         <Select onChange={(e) => setStatusChamado(e.target.value)}>  
+        <Option value="" selected disabled hidden>Status</Option>
+
                         { statusChamadoE.map(
                                         (item) =>
                                         <Option value={chamadoE.statusChamado}>{item.status}</Option>
@@ -263,6 +293,8 @@ const mostrarStatus = useCallback(
   
 
         <Select onChange={(e) => setTecnicoChamado(e.target.value)}>  
+        <Option value="" selected disabled hidden>Técnico</Option>
+
                 { tecnicos.map(
                                 (item) =>
                                 <Option value={chamadoE.tecnicoChamado}>{item.nome}</Option>
@@ -270,19 +302,15 @@ const mostrarStatus = useCallback(
         </Select>
     
            <Select onChange={(e) => setSistema(e.target.value)}>  
+           <Option value="" selected disabled hidden>Sistema</Option>
+
             { sistemas.map(
                                  (item) =>
                                 <Option value={chamadoE.sistema}>{item.nome}</Option>
                                 )}
         </Select>
 
-{/*                
-          <input
-            value={sistema}
-            type="text"
-            onChange={(e) => setSistema(e.target.value)}
-            placeholder="sistema"
-          /> */}
+
           <Input
             value={requerenteChamado}
             type="text"
@@ -299,12 +327,11 @@ const mostrarStatus = useCallback(
         <ButtonSubmit type="submit" id="link-continuar">
           Adicionar
         </ButtonSubmit>
-        </Infos>
       
             </FormPost>
    
  
- <Table responsive="sm">
+ <Table responsive="sm" id="minhaTabela">
     <thead>
         <th>ID</th>
         <th>Chamado </th>
@@ -318,6 +345,7 @@ const mostrarStatus = useCallback(
     </thead>
     
     <tbody>
+        
         {chamadoE.map((item) =>
             <tr>
                 <td> {item.id}</td>
@@ -328,7 +356,8 @@ const mostrarStatus = useCallback(
                 <td> {item.sistema}</td>
                 <td> {item.requerenteChamado}</td>
                 <td> {item.valorBoleto}</td>
-                <td><BoxIcon><FiTrash size={20}/></BoxIcon></td>
+                <td><BoxIcon><FiTrash onClick={() => removeChamados(item.id)}></FiTrash></BoxIcon></td>  
+            
                 
             </tr>
                             
@@ -337,9 +366,9 @@ const mostrarStatus = useCallback(
                 
 </Table> 
       
+      
+</Container>
 
-
-</ContainerTable>
   </> );
 }
 export default PostChamado; 

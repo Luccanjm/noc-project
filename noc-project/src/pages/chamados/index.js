@@ -1,6 +1,6 @@
 import React from 'react';
 import {Nav, Dropdown} from 'react-bootstrap';
-import {Header, Main, ContainerTable, ContainerImg, ContainerGeral, Lista, LinhaLista, LinkLista,Button} from './styles';
+import {Header, Main, ContainerImg, ContainerGeral, Lista, LinhaLista, LinkLista,Button} from './styles';
 import logoBranco from '../../assets/logo.png';
 
 import ExibirChamados from '../../components/mostrarChamados';
@@ -40,10 +40,8 @@ const Chamados = () =>{
                 </Nav>
         </Header>
         <Main>
-            <ContainerTable>
                {/* <ExibirChamados id="ExibirChamados"></ExibirChamados> */}
                <PostChamado id="PostChamado"></PostChamado>
-</ContainerTable>   
 </Main>
 <Footer id="footer"></Footer>
     

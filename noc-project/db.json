@@ -59,16 +59,6 @@
       "valorBoleto": "10",
       "mesChamado": "Janeiro",
       "id": 6
-    },
-    {
-      "numeroChamado": "45346",
-      "sistema": "NOC",
-      "requerenteChamado": "hjgj",
-      "tecnicoChamado": "lais.moura",
-      "statusChamado": "Finalizado",
-      "valorBoleto": "66",
-      "mesChamado": "Abril",
-      "id": 7
     }
   ],
   "tecnico": [
