@@ -43,6 +43,22 @@ li:first-child{
     } 
     .btn-success{
         background-color: rgb(0, 175, 239);
+        border:none;
+
+    }
+    .btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle{
+        background-color: rgb(0, 175, 239);
+        border:none;
+    }
+    .dropdown-menu[x-placement^=bottom], .dropdown-menu[x-placement^=left], .dropdown-menu[x-placement^=right], .dropdown-menu[x-placement^=top]{
+        background-color: rgb(0, 175, 239);
+        border:none;
+        color:#fff;
+    }
+    .dropdown-item:focus, .dropdown-item:hover{
+        background-color: rgb(0, 175, 239);
+        border:none;
+        color:#fff;
     }
 `;
 

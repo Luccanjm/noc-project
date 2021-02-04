@@ -34,8 +34,7 @@ const PostChamado = () => {
     const [statusChamadoE, setStatusChamadoE] = useState([]);
 // MesChamado
 const [mesChamadoE, setMesChamadoE] = useState([]);
-//--------------------------------------------------------------
-const [items, setItems] = useState([]);
+
 // -------------------------------------------------------------------
     const mostrarChamados = useCallback(
         async() => {
