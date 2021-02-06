@@ -3,14 +3,15 @@ import React, {
     useState,
     useEffect
 } from 'react';
-import { FiTrash } from "react-icons/fi";
+import Header from '../header';
+import Footer from '../footer';
 
-import {Container,BoxIcon, FormPost,Input, Select, Option, ButtonSubmit} from './styles';
-import {Table, Alert} from 'react-bootstrap';
+import {Container, ContainerSelect, Select, Option,ContainerTitle,PTitle, ContainerContagem} from './styles';
+import {Table} from 'react-bootstrap';
 import api from '../../services/api';
-import mostrarTecnicos from '../mostrarTecnicos';
-import Tecnico from '../mostrarTecnicos';
-import swal from 'sweetalert';
+import { reduce } from 'lodash';
+import { map } from 'jquery';
+
 
 const FiltroChamado = () => {
 // chamados 
@@ -23,7 +24,12 @@ const FiltroChamado = () => {
     const [valorBoleto, setValorBoleto] = useState();
     const [mesChamado, setMesChamado] = useState('');
     const [erroMensagem, setErroMensagem] = useState('');
-    
+    const [mesChamadoE, setMesChamadoE] = useState([]);
+
+    const [filtro, setFiltro] = useState([]);
+    const [mesFiltro, setMesfiltro] = useState('');
+
+    const [somaBoleto, setSomaBoleto] = useState([]);
 
     const mostrarChamados = useCallback(
         async() => {
@@ -43,120 +49,87 @@ const FiltroChamado = () => {
 
 
 
-    // const removerChamado = useCallback(
-    //     async(id) => {
-    //         try {
-    //             await api.delete(`chamado/${id}`);
-    //             console.log("Chamado removido.")
-    //             mostrarChamados();
-    //         } catch (error) {
-    //             setErroMensagem(error);
-    //         }
-    //     }, [mostrarChamados, chamadoE]
-    // );
-
-    const removeChamados = useCallback(
-        async (chamadoE) => {
-          await api.delete(`chamado/${chamadoE.id}`);
-    
-          mostrarChamados();
-        },[mostrarChamados],
-      );
-// ---------------------------------------------------------------
-
-      const [data, setData] = useState([])   
-      const [dataKeys, setDataKeys] = useState([])
-      const [originalData, setOriginalData] = useState();
-
-      useEffect( (chamadoE) => {
-          const fetchData = async (chamadoE) => {
-            try{
-              const requestData = await api.get(`/chamado`)
-              setData(requestData.chamadoE)
-              setDataKeys(Object.keys(requestData.chamadoE[0]))
-              setOriginalData(requestData.chamadoE);
-            }catch(err){}
-  
-          }
-          fetchData(chamadoE)
-        }, []);
-  
-      function handleInput(e){
-        const inputValue = e.target.value; // e.target corresponde ao elemento input.
-        setData(searchTable(inputValue));  // assumindo `data` como propriedade global do 
-                                           // estado Nao precisa passar como parametro.
+        const mostrarMesChamado = useCallback(
+            async() => {
+                try {
+                    const resposta = await api.get('mesChamado');
+                    setMesChamadoE(resposta.data);
+                } catch (error) {
+                    console.log("Erro na busca da API", error);
+                    setErroMensagem(error);
+                }
+            },[mesChamadoE]
+            );
+        
+            useEffect(() =>{
+                mostrarMesChamado();
+            }, [mostrarMesChamado])
 
        
-        }
-        function searchTable(value) {
-            const filteredData = [];
-           
-            if (value.length === 0) {
-              return originalData; // ESTE RETORNO IRA RESTAURAR OS DADOS ORIGINAIS DO 
-                                  // DATA
-            }
-           
-            for (let i = 0; i < chamadoE.length; ++i) {
-             const newValue = value.toLowerCase(); // nao redeclare o value.
-           
-             const user = chamadoE[i].mesChamado.toLowerCase();
-           
-             if (user.includes(newValue)) {
-               filteredData.push(chamadoE[i]);
-             }
-            }
-            return filteredData;
-           }
+// ---------------------------------------------------------------
+
+const filtroMes = useCallback(
+  async() => {
+      try {
+          const resposta = await api.get(`chamado?mesChamado=${mesFiltro}`);
+          setFiltro(resposta.data);
+      } catch (error) {
+          console.log("Erro na busca da API(filtroMes)", error);
+          setErroMensagem(error);
+      }
+  },[filtro]
+  );
+
+  useEffect(() =>{
+      filtroMes();
+  }, [filtroMes])
 
 
-    return(
+  
+     return(
         <>
-        <Container>
-        <input
-  className="form-input"
-  onChange={() => handleInput()} 
-  id="input-table"
-  placeholder="mês filtro"
-/>
- 
- <Table responsive="sm" id="minhaTabela">
-    <thead>
-        <th>ID</th>
-        <th>Chamado </th>
-        <th>Mês</th>
-        <th>Status</th>
-        <th>Técnico</th>
-        <th>Sistema</th>
-        <th>Requerente</th>
-        <th>Valor do boleto</th>
-        <th>#</th>
-    </thead>
-    
-    <tbody>
-        
-        {chamadoE.map((item) =>
-            <tr>
-                <td> {item.id}</td>
-                <td> {item.numeroChamado}</td>
-                <td> {item.mesChamado}</td>
-                <td> {item.statusChamado}</td>
-                <td> {item.tecnicoChamado}</td>
-                <td> {item.sistema}</td>
-                <td> {item.requerenteChamado}</td>
-                <td> {item.valorBoleto}</td>
-                <td><BoxIcon><FiTrash onClick={() => removeChamados(item.id)}></FiTrash></BoxIcon></td>  
-            
-                
-            </tr>
-                            
-        )}
-    </tbody> 
-                
-</Table> 
-      
-      
-</Container>
+            <Header id="header"></Header>
+            <ContainerTitle><PTitle>Selecione o mês que deseja verificar os chamados</PTitle></ContainerTitle>
+            <ContainerSelect>
+                    <Select  onChange={(e) => setMesfiltro(e.target.value)}>  
+                        <Option value="" selected disabled hidden>----</Option>
+                            { mesChamadoE.map((item) =>
+                                <Option value={chamadoE.mesChamado}>{item.nomeMes}</Option>
+                            )}
+                </Select>
+            </ContainerSelect>
+            <Container>
 
+                <Table>
+                    <thead>
+                        <th>ID</th>
+                        <th>Chamado </th>
+                        <th>Mês</th>
+                        <th>Status</th>
+                        <th>Técnico</th>
+                        <th>Sistema</th>
+                        <th>Requerente</th>
+                        <th>Valor do boleto</th>
+                    </thead>
+                    <tbody>
+                        {filtro.map((item) =>
+                            <tr>
+                                <td key={item.id}> {item.id}</td>
+                                <td key={item.numeroChamado}> {item.numeroChamado}</td>
+                                <td key={item.mesChamado}> {item.mesChamado}</td>
+                                <td key={item.statusChamado}> {item.statusChamado}</td>
+                                <td key={item.tecnicoChamado}> {item.tecnicoChamado}</td>
+                                <td key={item.sistema}> {item.sistema}</td>
+                                <td key={item.requerenteChamado}> {item.requerenteChamado}</td>
+                                <td key={item.valorBoleto}> {item.valorBoleto}</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </Table>
+        
+        <ContainerContagem></ContainerContagem>
+            </Container>
+            <Footer id="footer"></Footer>
   </> );
 }
 export default FiltroChamado; 

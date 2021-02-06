@@ -130,13 +130,13 @@ return(
     <tbody>
         {chamadoE.map((item) =>
             <tr>
-                <td> {item.numeroChamado}</td>
-                <td> {item.mesChamado}</td>
-                <td> {item.statusChamado}</td>
-                <td> {item.tecnicoChamado}</td>
-                <td> {item.sistema}</td>
-                <td> {item.requerenteChamado}</td>
-                <td> {item.valorBoleto}</td>
+                <td key={item.numeroChamado}> {item.numeroChamado}</td>
+                <td key={item.mesChamado}> {item.mesChamado}</td>
+                <td key={item.statusChamado}> {item.statusChamado}</td>
+                <td key={item.tecnicoChamado}> {item.tecnicoChamado}</td>
+                <td key={item.sistema}> {item.sistema}</td>
+                <td key={item.requerenteChamado}> {item.requerenteChamado}</td>
+                <td key={item.valorBoleto}> {item.valorBoleto}</td>
                 
                 
             </tr>
