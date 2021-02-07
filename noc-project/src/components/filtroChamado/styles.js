@@ -30,11 +30,6 @@ justify-content:center;
 }
 `;
 
-
-export const ContainerButton = styled.div`
-margin-right:20px;
-
-`;
 export const FormPost = styled.form`
 display:flex;
 `;
@@ -63,14 +58,7 @@ padding:10px;
 `;
 export const Option = styled.option`
 `;
-export const ButtonSubmit = styled.button`
-width: 150px;
-height:50px;
-border-radius:5px;
-border:none;
-background: linear-gradient(120deg, rgb(0, 175, 239), rgb(163, 205, 77));
 
-`;
 export const ContainerSelect = styled.div`
 justify-content:center;
 display:flex;
@@ -86,3 +74,19 @@ margin:10px 0 0 0;
 font-weight: light;
 `;
 export const ContainerContagem = styled.div``;
+
+export const ButtonSubmit = styled.button`
+width: 200px;
+color:#145E7D;
+height:50px;
+border-radius:5px;
+border:none;
+background:rgba(255, 255, 255, 0.8);
+
+`;
+export const ContainerButton = styled.div`
+display:flex;
+justify-content:center;
+padding:30px;
+
+`;

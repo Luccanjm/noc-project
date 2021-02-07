@@ -5,15 +5,20 @@ import React, {
 } from 'react';
 import Header from '../header';
 import Footer from '../footer';
+import Pdf from "react-to-pdf";
 
-import {Container, ContainerSelect, Select, Option,ContainerTitle,PTitle, ContainerContagem} from './styles';
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+
+import {Container, ContainerSelect, Select, Option,ContainerTitle,PTitle, ContainerContagem, ButtonSubmit, ContainerButton} from './styles';
 import {Table} from 'react-bootstrap';
 import api from '../../services/api';
-import { reduce } from 'lodash';
-import { map } from 'jquery';
+import { Impressao } from '../gerarPdf/impressao';
 
 
 const FiltroChamado = () => {
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 // chamados 
     const [chamadoE, setChamadosE] = useState([]);
     const [numeroChamado, setNumeroChamado] = useState('');
@@ -29,7 +34,8 @@ const FiltroChamado = () => {
     const [filtro, setFiltro] = useState([]);
     const [mesFiltro, setMesfiltro] = useState('');
 
-    const [somaBoleto, setSomaBoleto] = useState([]);
+    const [somaBoletos, setSomaBoletos] = useState('');
+    const [totalBoletos, setTotalBoletos] = useState('');
 
     const mostrarChamados = useCallback(
         async() => {
@@ -68,24 +74,42 @@ const FiltroChamado = () => {
        
 // ---------------------------------------------------------------
 
-const filtroMes = useCallback(
-  async() => {
-      try {
-          const resposta = await api.get(`chamado?mesChamado=${mesFiltro}`);
-          setFiltro(resposta.data);
-      } catch (error) {
-          console.log("Erro na busca da API(filtroMes)", error);
-          setErroMensagem(error);
-      }
-  },[filtro]
-  );
+    const filtroMes = useCallback(
+    async() => {
+        try {
+            const resposta = await api.get(`chamado?mesChamado=${mesFiltro}`);
+            setFiltro(resposta.data);
+            // console.log("Valor Total Mês:", valorTotal);
+            setSomaBoletos(valorTotal);
+           
+        } catch (error) {
+            console.log("Erro na busca da API(filtroMes)", error);
+            setErroMensagem(error);
+        }
+    },[filtro]
+    );
 
-  useEffect(() =>{
-      filtroMes();
-  }, [filtroMes])
+    useEffect(() =>{
+        filtroMes();
+    }, [filtroMes])
 
+    // Gerar Pdf Filtrado
 
-  
+    const visualizarImpressao = async () => {
+        console.log('report', filtro);
+        const classeImpressao = new Impressao(filtro);
+        const documento = await classeImpressao.PreparaDocumento();
+        pdfMake.createPdf(documento).open({}, window.open('', '_blank'));
+    }
+
+    const valorTotal = filtro.reduce((total, value) => {
+        return {
+          ...total,
+        
+         [value.mesChamado]: parseFloat(value.valorBoleto) + parseFloat((total[value.mesChamado] ?? 0))
+        }
+      }, {})
+// console.log("valorTotal", valorTotal);
      return(
         <>
             <Header id="header"></Header>
@@ -124,14 +148,23 @@ const filtroMes = useCallback(
                                 <td key={item.valorBoleto}> {item.valorBoleto}</td>
                             </tr>
                         )}
+
                     </tbody>
+           
                 </Table>
-        
-        <ContainerContagem></ContainerContagem>
             </Container>
+            <ContainerContagem>
+            </ContainerContagem>
+
+            <ContainerButton>
+                    <ButtonSubmit className="btn" onClick={visualizarImpressao}>
+                            Gerar relatório 
+                        </ButtonSubmit>
+                 </ContainerButton>
             <Footer id="footer"></Footer>
   </> );
 }
+
 export default FiltroChamado; 
 
 

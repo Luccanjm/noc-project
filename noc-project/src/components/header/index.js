@@ -16,7 +16,6 @@ return(
 <Lista>
 <LinhaLista><Button><LinkLista href="/chamados">Chamados</LinkLista></Button></LinhaLista>
 <LinhaLista><Button><LinkLista href="/filtro">Filtrar Chamados</LinkLista></Button></LinhaLista>
-<LinhaLista><Button><LinkLista href="#">Gerar Relatório</LinkLista></Button></LinhaLista>
 <LinhaLista><Button><LinkLista href="#">Criar Perfil Técnico</LinkLista></Button></LinhaLista>
 <LinhaLista id="dropdownlista"><Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic" >

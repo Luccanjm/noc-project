@@ -1,3 +1,5 @@
+import logo from '../../assets/logoAzul.png';
+
 export class Impressao {
   
     constructor(dadosParaImpressao) {
@@ -12,17 +14,25 @@ export class Impressao {
   
     CriaCorpoDocumento() {
       const header = [
-        { text: 'Mês Chamado', bold: true, fontSize: 9, margin: [0, 4, 0, 0] },
-        { text: 'Número Chamado', bold: true, fontSize: 9, margin: [0, 4, 0, 0] },
-        { text: 'Valor Boleto', bold: true, fontSize: 9, margin: [0, 4, 0, 0] },
+        { text: 'Mês Chamado', bold: true, fontSize: 12, margin: [0, 4, 0, 0] },
+        { text: 'Número Chamado', bold: true, fontSize: 12, margin: [0, 4, 0, 0] },
+        { text: 'Valor Boleto', bold: true, fontSize: 12, margin: [0, 4, 0, 0] },
+        { text: 'Técnico Chamado', bold: true, fontSize: 12, margin: [0, 4, 0, 0] },
+        { text: 'Sistema', bold: true, fontSize: 12, margin: [0, 4, 0, 0] },
+
+
       ];
       const body = this.dadosParaImpressao.map((item) => {
         return [
-          { text: item.mesChamado, fontSize: 8 },
-          { text: item.mesChamado, fontSize: 8 },
-          { text: item.valorBoleto, fontSize: 8 },
+          { text: item.mesChamado, fontSize: 12 },
+          { text: item.numeroChamado, fontSize: 12 },
+          { text: item.valorBoleto, fontSize: 12 },
+          { text: item.tecnicoChamado, fontSize: 12 },
+          { text: item.sistema, fontSize: 12 }
+
         ];
       });
+     
   
       const lineHeader = [
         {
@@ -30,7 +40,8 @@ export class Impressao {
             '__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________',
           alignment: 'center',
           fontSize: 5,
-          colSpan: 3,
+          colSpan: 5,
+          
         },
         {},
         {},
@@ -53,7 +64,7 @@ export class Impressao {
                 widths: ['*'],
                 body: [                             
                   [
-                    { text: 'RELATÓRIO DE CHAMADOS', style: 'reportName' }
+                    { text: `RELATÓRIO DE CHAMADOS`, style: 'reportName' }
                   ]              
                 ],
               },
@@ -64,7 +75,7 @@ export class Impressao {
               layout: 'noBorders',
               table: {              
                 headerRows: 1,
-                widths: [ '*', 55, 55 ],
+                widths: [ '*',100,100,100,100],
         
                 body: corpoDocumento
               }
@@ -95,7 +106,7 @@ export class Impressao {
                         margin: [3, 0],
                       },
                       {
-                        text: '© NOC TI',
+                        text: '© NOC TI | Sumicity ',
                         fontSize: 7,
                         alignment: 'center',
                       },
@@ -107,10 +118,11 @@ export class Impressao {
           },
       styles: {
         reportName: {
-          fontSize: 9,
+          fontSize: 20,
           bold: true,
           alignment: 'center',
           margin: [0, 4, 0, 0],
+          color:'#145E7D',
         }
       },
       
