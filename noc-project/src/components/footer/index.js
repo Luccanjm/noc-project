@@ -5,7 +5,7 @@ const Footer = () =>{
 
 return(
     <Credito>
-        <p>&copy; Desenvolvido pelo NOC | Sumicity</p>
+        <p>&copy; Desenvolvido pelo NOC | Sumicity 2021</p>
     </Credito>
 )
 }

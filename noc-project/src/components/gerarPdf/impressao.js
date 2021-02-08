@@ -1,9 +1,11 @@
 import logo from '../../assets/logoAzul.png';
 
 export class Impressao {
-  
+
+
     constructor(dadosParaImpressao) {
       this.dadosParaImpressao = dadosParaImpressao;
+
     }  
     
     async PreparaDocumento() {
@@ -28,7 +30,10 @@ export class Impressao {
           { text: item.numeroChamado, fontSize: 12 },
           { text: item.valorBoleto, fontSize: 12 },
           { text: item.tecnicoChamado, fontSize: 12 },
-          { text: item.sistema, fontSize: 12 }
+          { text: item.sistema, fontSize: 12 },
+          { text: item.somaBoletos, fontSize: 12 },
+
+
 
         ];
       });
@@ -64,7 +69,9 @@ export class Impressao {
                 widths: ['*'],
                 body: [                             
                   [
-                    { text: `RELATÓRIO DE CHAMADOS`, style: 'reportName' }
+                    { text: `RELATÓRIO DE CHAMADOS`, style: 'reportName' },
+
+
                   ]              
                 ],
               },
@@ -106,7 +113,7 @@ export class Impressao {
                         margin: [3, 0],
                       },
                       {
-                        text: '© NOC TI | Sumicity ',
+                        text: '© NOC TI | Sumicity 2021 ',
                         fontSize: 7,
                         alignment: 'center',
                       },

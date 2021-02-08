@@ -5,8 +5,6 @@ export const BoxIcon = styled.div`
     height:20px;
 `;
 export const Container = styled.div`
-display:flex;
-justify-content:center;
 .table{
     background:rgba(255, 255, 255, 0.8);
     width:1100px;
@@ -28,20 +26,21 @@ justify-content:center;
 #minhaTabela tr.selecionado td{
   background-color: #aff7ff;
 }
-.textTotal{
-  font-weight:bold;
-  font-size:20px;
-}
-
 `;
 
 
+
+
+export const ContainerButton = styled.div`
+margin-right:20px;
+
+`;
 export const FormPost = styled.form`
 display:flex;
 `;
 
 export const Input = styled.input`
-width: 200px;
+width: auto;
 height:50px;
 border-radius:5px;
 border:none;
@@ -53,46 +52,21 @@ background:rgba(255, 255, 255, 0.8);
 `;
 
 export const Select = styled.select`
-width: 200px;
+width: auto;
 height:50px;
 border-radius:5px;
 border:none;
 margin-right:5px;
 background:rgba(255, 255, 255, 0.8);
-padding:10px;
 
 `;
 export const Option = styled.option`
 `;
-
-export const ContainerSelect = styled.div`
-justify-content:center;
-display:flex;
-margin-top:20px;
-`;
-export const ContainerTitle = styled.div`
-justify-content:center;
-display:flex;
-`;
-export const PTitle = styled.p`
-font-size:30px;
-margin:10px 0 0 0;
-font-weight: light;
-`;
-export const ContainerContagem = styled.div``;
-
 export const ButtonSubmit = styled.button`
-width: 200px;
-color:#145E7D;
+width: 150px;
 height:50px;
 border-radius:5px;
 border:none;
-background:rgba(255, 255, 255, 0.8);
-
-`;
-export const ContainerButton = styled.div`
-display:flex;
-justify-content:center;
-padding:30px;
+background: linear-gradient(120deg, rgb(0, 175, 239), rgb(163, 205, 77));
 
 `;

@@ -34,8 +34,7 @@ const FiltroChamado = () => {
     const [filtro, setFiltro] = useState([]);
     const [mesFiltro, setMesfiltro] = useState('');
 
-    const [somaBoletos, setSomaBoletos] = useState('');
-    const [totalBoletos, setTotalBoletos] = useState('');
+    const [somaBoletos, setSomaBoletos] = useState([]);
 
     const mostrarChamados = useCallback(
         async() => {
@@ -78,9 +77,9 @@ const FiltroChamado = () => {
     async() => {
         try {
             const resposta = await api.get(`chamado?mesChamado=${mesFiltro}`);
-            setFiltro(resposta.data);
-            // console.log("Valor Total Mês:", valorTotal);
+            setFiltro(resposta.data);            
             setSomaBoletos(valorTotal);
+            // console.log("Valor Total Mês:", valorTotal);
            
         } catch (error) {
             console.log("Erro na busca da API(filtroMes)", error);
@@ -92,23 +91,22 @@ const FiltroChamado = () => {
     useEffect(() =>{
         filtroMes();
     }, [filtroMes])
+    
 
     // Gerar Pdf Filtrado
 
     const visualizarImpressao = async () => {
         console.log('report', filtro);
-        const classeImpressao = new Impressao(filtro);
+        const classeImpressao = new Impressao(filtro, somaBoletos);
         const documento = await classeImpressao.PreparaDocumento();
         pdfMake.createPdf(documento).open({}, window.open('', '_blank'));
     }
 
-    const valorTotal = filtro.reduce((total, value) => {
-        return {
-          ...total,
-        
-         [value.mesChamado]: parseFloat(value.valorBoleto) + parseFloat((total[value.mesChamado] ?? 0))
-        }
-      }, {})
+      let valorTotal = 0;
+      for (let i = 0; i < filtro.length; i++) {
+          valorTotal += parseFloat(filtro[i].valorBoleto);
+      }
+
 // console.log("valorTotal", valorTotal);
      return(
         <>
@@ -145,10 +143,19 @@ const FiltroChamado = () => {
                                 <td key={item.tecnicoChamado}> {item.tecnicoChamado}</td>
                                 <td key={item.sistema}> {item.sistema}</td>
                                 <td key={item.requerenteChamado}> {item.requerenteChamado}</td>
-                                <td key={item.valorBoleto}> {item.valorBoleto}</td>
+                                <td key={item.valorBoleto}>R$ {item.valorBoleto}</td>
+                                
                             </tr>
                         )}
-
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td className="textTotal">Valor Total</td>
+                            <td key={valorTotal} className="textTotal">R$ {valorTotal}</td></tr>
                     </tbody>
            
                 </Table>

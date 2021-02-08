@@ -66,6 +66,7 @@
       "requerenteChamado": "",
       "tecnicoChamado": "isabella.couto",
       "statusChamado": "Pendente",
+      "valorBoleto": "10",
       "mesChamado": "Maio",
       "id": 7
     },
@@ -75,6 +76,7 @@
       "requerenteChamado": "",
       "tecnicoChamado": "lais.moura",
       "statusChamado": "Pendente",
+      "valorBoleto": "10",
       "mesChamado": "Março",
       "id": 8
     },
@@ -84,8 +86,59 @@
       "requerenteChamado": "",
       "tecnicoChamado": "lucca.martinelli",
       "statusChamado": "Pendente",
+      "valorBoleto": "10",
       "mesChamado": "Abril",
       "id": 9
+    },
+    {
+      "numeroChamado": "213123",
+      "sistema": "AIR",
+      "requerenteChamado": "",
+      "tecnicoChamado": "lucca.martinelli",
+      "statusChamado": "Processando",
+      "valorBoleto": "10",
+      "mesChamado": "Janeiro",
+      "id": 10
+    },
+    {
+      "numeroChamado": "12333",
+      "sistema": "SYDLE",
+      "requerenteChamado": "",
+      "tecnicoChamado": "isabella.couto",
+      "statusChamado": "Pendente",
+      "valorBoleto": "10",
+      "mesChamado": "Janeiro",
+      "id": 11
+    },
+    {
+      "numeroChamado": "454676",
+      "sistema": "AIR",
+      "requerenteChamado": "",
+      "tecnicoChamado": "douglas.silva",
+      "statusChamado": "Finalizado",
+      "valorBoleto": "25",
+      "mesChamado": "Janeiro",
+      "id": 12
+    },
+    {
+      "numeroChamado": "992831",
+      "sistema": "NOC",
+      "requerenteChamado": "",
+      "tecnicoChamado": "lucca.martinelli",
+      "statusChamado": "Processando",
+      "valorBoleto": "63",
+      "mesChamado": "Janeiro",
+      "id": 13
+    },
+    {
+      "numeroChamado": "567567",
+      "sistema": "SYDLE",
+      "requerenteChamado": "",
+      "tecnicoChamado": "isabella.couto",
+      "statusChamado": "Pendente",
+      "valorBoleto": "0",
+      "mesChamado": "Fevereiro",
+      "id": 14
     }
   ],
   "tecnico": [
@@ -142,10 +195,6 @@
     {
       "id": 3,
       "nome": "NOC"
-    },
-    {
-      "id": 4,
-      "nome": "GLPI"
     }
   ],
   "statusChamado": [

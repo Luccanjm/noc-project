@@ -75,30 +75,35 @@ const [mesChamadoE, setMesChamadoE] = useState([]);
                 }
                 if (!numeroChamado ) {
                     setErroMensagem('Campos numero chamado vazio');
-                    swal("Info", "Campo número chamado vazio, por favor preencha o número do chamado para adicionar a tabela.", "info");
+                    swal("Info", "Campo número chamado vazio, por favor preencha o número do chamado para adicionar o chamado.", "info");
                     console.log(erroMensagem);
                     return;
                 }else if(!mesChamado){
-                    setErroMensagem('Campo mês chamado vazio, por favor preencha o mês do chamado para adicionar a tabela.');
+                    setErroMensagem('Campo mês chamado vazio, por favor preencha o mês do chamado para adicionar o chamado.');
                     swal("Info", "Campo mês vazio!", "info");
                     console.log(erroMensagem);
                     return;
                 }else if(!statusChamado){
                     setErroMensagem('Campo status chamado vazio!');
-                    swal("Info", "Campo status vazio, por favor preencha o status do chamado para adicionar a tabela.", "info");
+                    swal("Info", "Campo status vazio, por favor preencha o status do chamado para adicionar o chamado.", "info");
                     console.log(erroMensagem);
                     return;
                 }
              
                 else if(!tecnicoChamado){
                     setErroMensagem('Campo tecnico chamado vazio!');
-                    swal("Info", "Campo técnico chamado vazio, por favor preencha o técnico do chamado para adicionar a tabela.", "info");
+                    swal("Info", "Campo técnico chamado vazio, por favor preencha o técnico do chamado para adicionar o chamado.", "info");
                     console.log(erroMensagem);
                     return;
                 }
                 else if(!sistema){
                     setErroMensagem('Campo sistema vazio!');
-                     swal("Info", "Campo sistema vazio, por favor preencha o sistema do chamado para adicionar a tabela.", "info");
+                     swal("Info", "Campo sistema vazio, por favor preencha o sistema do chamado para adicionar o chamado.", "info");
+                    console.log(erroMensagem);
+                    return;
+                } else if(!valorBoleto){
+                    setErroMensagem('Campo valor boleto vazio!');
+                    swal("Info", "Campo valor vazio,por favor preencha o valor do Boleto para adicionar o chamado. Caso o valor não exista, preencha com 0.", "info");
                     console.log(erroMensagem);
                     return;
                 }
@@ -108,12 +113,7 @@ const [mesChamadoE, setMesChamadoE] = useState([]);
                 //     console.log(erroMensagem);
                 //     return;
                 // }
-                // else if(!valorBoleto){
-                //     setErroMensagem('Campo valor boleto vazio!');
-                //     swal("Info", "Campo valor vazio!", "info");
-                //     console.log(erroMensagem);
-                //     return;
-                // }
+               
                 setErroMensagem('');
            
                 try {
@@ -355,7 +355,7 @@ const mostrarStatus = useCallback(
                 <td key={item.sistema}> {item.sistema}</td>
                 <td key={item.requerenteChamado}> {item.requerenteChamado}</td>
                 <td key={item.valorBoleto}> {item.valorBoleto}</td>
-                <td><BoxIcon><FiTrash onClick={() => removeChamados(item.id)}></FiTrash></BoxIcon></td>  
+                <td><BoxIcon><FiTrash onClick={(e) => removeChamados(e.target.id)}></FiTrash></BoxIcon></td>  
             
                 
             </tr>
