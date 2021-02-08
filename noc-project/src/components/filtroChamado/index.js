@@ -97,7 +97,7 @@ const FiltroChamado = () => {
 
     const visualizarImpressao = async () => {
         console.log('report', filtro);
-        const classeImpressao = new Impressao(filtro, somaBoletos);
+        const classeImpressao = new Impressao(filtro);
         const documento = await classeImpressao.PreparaDocumento();
         pdfMake.createPdf(documento).open({}, window.open('', '_blank'));
     }

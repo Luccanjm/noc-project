@@ -30,8 +30,7 @@ export class Impressao {
           { text: item.numeroChamado, fontSize: 12 },
           { text: item.valorBoleto, fontSize: 12 },
           { text: item.tecnicoChamado, fontSize: 12 },
-          { text: item.sistema, fontSize: 12 },
-          { text: item.somaBoletos, fontSize: 12 },
+          { text: item.sistema, fontSize: 12 }
 
 
 
@@ -69,7 +68,7 @@ export class Impressao {
                 widths: ['*'],
                 body: [                             
                   [
-                    { text: `RELATÓRIO DE CHAMADOS`, style: 'reportName' },
+                    { text: `RELATÓRIO DE CHAMADOS`, style: 'reportName' }
 
 
                   ]              
