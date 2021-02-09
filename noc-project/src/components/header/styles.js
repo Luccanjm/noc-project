@@ -57,13 +57,13 @@ export const LinhaLista = styled.li`
 
 export const Button = styled.button`
 width: 150px;
-height:50px;
+ height:40px;
 border-radius:5px;
 border:none;
 background: #28a745;
-max-width:150px;
-margin: 5px 50px;
-
+// max-width:150px;
+margin: 0 50px;
+margin-bottom: 10px;
 `;
 
 export const LinkLista = styled.a`
@@ -71,4 +71,5 @@ export const LinkLista = styled.a`
     color: #fff;
 `;
 export const ContainerImg = styled.div`
+
 `;

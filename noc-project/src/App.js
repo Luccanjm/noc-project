@@ -4,6 +4,7 @@ import Routes from './routes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import GlobalStyles from './styles/global';
 
+
 function App() {
 
   return (
@@ -11,7 +12,6 @@ function App() {
 
 <BrowserRouter>
 <Routes />
-
 </BrowserRouter>
 <GlobalStyles />
 </>
