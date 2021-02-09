@@ -67,6 +67,7 @@ width: 150px;
 height:50px;
 border-radius:5px;
 border:none;
-background: linear-gradient(120deg, rgb(0, 175, 239), rgb(163, 205, 77));
+background: #28a745;
+
 
 `;

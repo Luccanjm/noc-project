@@ -13,9 +13,9 @@ const PaginationC = () => {
 // chamados 
     const [chamadoE, setChamadosE] = useState([]);
     const [erroMensagem, setErroMensagem] = useState('');
-    const [pageC, setPageC] = useState('1');
-    const [pages, setPages] = useState('');
-
+    const [pageC, setPageC] = useState('');
+    const [pages, setPages] = useState([]);
+    
 
 // -------------------------------------------------------------------
     const mostrarChamados = useCallback(
@@ -34,12 +34,14 @@ const PaginationC = () => {
             mostrarChamados();
         }, [mostrarChamados])
 
+        let pagina = 2;
 
         const mostrarPaginas = useCallback(
             async()=> {
                 try {
-                    const resposta = await api.get(`chamado/?_page=${pageC}&_limit=5`);
+                    const resposta = await api.get(`chamado/?_page=${pagina}&_limit=5`);
                     setPages(resposta.data);
+                    console.log(pages);
                 } catch (error) {
                     console.log("Erro na busca da API(mostrarPaginas)", error);
                     setErroMensagem(error);
@@ -50,40 +52,40 @@ const PaginationC = () => {
             mostrarPaginas();
         }, [mostrarPaginas])
 
+        function aumentarPagina(){
+            pagina= pagina + 1;
+            // console.log(pagina);
+            toString(pagina);
+            window.location.reload(true);
+        }
+        function diminuirPagina(){
+            pagina = pagina - 1;
+            // console.log(pagina);
+            toString(pagina);
+            window.location.reload(true);
 
-  
+        }
+
     return(
         <>
         <Container>
-          
-        
+
+        <button onClick={aumentarPagina}> Aumenta</button>
+        <button onClick={diminuirPagina}> Diminui</button>
+
  
  <Table responsive="sm" id="minhaTabela">
     <thead>
         <th>ID</th>
-        <th>Chamado </th>
-        <th>Mês</th>
-        <th>Status</th>
-        <th>Técnico</th>
-        <th>Sistema</th>
-        <th>Requerente</th>
-        <th>Valor do boleto</th>
-        <th>#</th>
+     
     </thead>
     
     <tbody>
         
-        {chamadoE.map((item) =>
+        {pages.map((item) =>
             <tr>
                 <td key={item.id}> {item.id}</td>
-                <td key={item.numeroChamado}> {item.numeroChamado}</td>
-                <td key={item.mesChamado}> {item.mesChamado}</td>
-                <td key={item.statusChamado}> {item.statusChamado}</td>
-                <td key={item.tecnicoChamado}> {item.tecnicoChamado}</td>
-                <td key={item.sistema}> {item.sistema}</td>
-                <td key={item.requerenteChamado}> {item.requerenteChamado}</td>
-                <td key={item.valorBoleto}> {item.valorBoleto}</td>
-                <td><BoxIcon><FiTrash ></FiTrash></BoxIcon></td>  
+        
             </tr>
                             
         )}

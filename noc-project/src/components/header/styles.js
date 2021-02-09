@@ -53,8 +53,6 @@ li:first-child{
 `;
 
 export const LinhaLista = styled.li`
-
-
 `;
 
 export const Button = styled.button`
@@ -64,6 +62,8 @@ border-radius:5px;
 border:none;
 background: #28a745;
 max-width:150px;
+margin: 5px 50px;
+
 `;
 
 export const LinkLista = styled.a`
