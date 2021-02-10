@@ -15,7 +15,6 @@ import {Table} from 'react-bootstrap';
 import api from '../../services/api';
 import { Impressao } from '../gerarPdf/impressao';
 
-
 const FiltroChamado = () => {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -115,8 +114,8 @@ const FiltroChamado = () => {
             <ContainerSelect>
                     <Select  onChange={(e) => setMesfiltro(e.target.value)}>  
                         <Option value="" selected disabled hidden>----</Option>
-                            { mesChamadoE.map((item) =>
-                                <Option value={chamadoE.mesChamado}>{item.nomeMes}</Option>
+                            { mesChamadoE.map((object) =>
+                                <Option value={chamadoE.mesChamado}>{object.nomeMes}</Option>
                             )}
                 </Select>
             </ContainerSelect>
@@ -134,16 +133,16 @@ const FiltroChamado = () => {
                         <th>Valor do boleto</th>
                     </thead>
                     <tbody>
-                        {filtro.map((item) =>
+                        {filtro.map((object) =>
                             <tr>
-                                <td key={item.id}> {item.id}</td>
-                                <td key={item.numeroChamado}> {item.numeroChamado}</td>
-                                <td key={item.mesChamado}> {item.mesChamado}</td>
-                                <td key={item.statusChamado}> {item.statusChamado}</td>
-                                <td key={item.tecnicoChamado}> {item.tecnicoChamado}</td>
-                                <td key={item.sistema}> {item.sistema}</td>
-                                <td key={item.requerenteChamado}> {item.requerenteChamado}</td>
-                                <td key={item.valorBoleto}>R$ {item.valorBoleto}</td>
+                                <td key={object.id}> {object.id}</td>
+                                <td key={object.numeroChamado}> {object.numeroChamado}</td>
+                                <td key={object.mesChamado}> {object.mesChamado}</td>
+                                <td key={object.statusChamado}> {object.statusChamado}</td>
+                                <td key={object.tecnicoChamado}> {object.tecnicoChamado}</td>
+                                <td key={object.sistema}> {object.sistema}</td>
+                                <td key={object.requerenteChamado}> {object.requerenteChamado}</td>
+                                <td key={object.valorBoleto}>R$ {object.valorBoleto}</td>
                                 
                             </tr>
                         )}

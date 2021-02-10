@@ -34,8 +34,6 @@ justify-content:center;
 }
 
 `;
-
-
 export const FormPost = styled.form`
 display:flex;
 `;
@@ -64,6 +62,7 @@ padding:10px;
 `;
 export const Option = styled.option`
 `;
+
 
 export const ContainerSelect = styled.div`
 justify-content:center;

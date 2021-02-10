@@ -5,6 +5,7 @@ export const BoxIcon = styled.div`
     height:20px;
 `;
 export const Container = styled.div`
+
 .table{
     background:rgba(255, 255, 255, 0.8);
     width:1100px;
@@ -27,18 +28,12 @@ export const Container = styled.div`
   background-color: #aff7ff;
 }
 `;
-
-
-
-
-export const ContainerButton = styled.div`
-margin-right:20px;
-
-`;
 export const FormPost = styled.form`
 display:flex;
 `;
-
+export const ContainerButton = styled.div`
+margin-right:20px;
+`;
 export const Input = styled.input`
 width: auto;
 height:50px;

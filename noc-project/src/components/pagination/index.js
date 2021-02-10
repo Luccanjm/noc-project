@@ -1,10 +1,15 @@
-import React, { Component, useCallback, useEffect, useState } from 'react';
+import React, { Component } from 'react';
 import ReactPaginate from 'react-paginate';
 import api from '../../services/api';
 import {Container} from './styles';
 import {Table} from 'react-bootstrap';
 
+
+
 class PaginationC extends Component {
+    componentDidMount(){
+        this.receivedData()
+    }
 
     receivedData() {
         api
@@ -29,16 +34,16 @@ class PaginationC extends Component {
                             <th>#</th>
                         </thead>
                         <tbody>
-                            {slice.map((item) =>
+                            {slice.map((element) =>
                                 <tr>
-                                    <td key={item.id}> {item.id}</td>
-                                    <td key={item.numeroChamado}> {item.numeroChamado}</td>
-                                    <td key={item.mesChamado}> {item.mesChamado}</td>
-                                    <td key={item.statusChamado}> {item.statusChamado}</td>
-                                    <td key={item.tecnicoChamado}> {item.tecnicoChamado}</td>
-                                    <td key={item.sistema}> {item.sistema}</td>
-                                    <td key={item.requerenteChamado}> {item.requerenteChamado}</td>
-                                    <td key={item.valorBoleto}> {item.valorBoleto}</td>
+                                    <td key={element.id}> {element.id}</td>
+                                    <td key={element.numeroChamado}> {element.numeroChamado}</td>
+                                    <td key={element.mesChamado}> {element.mesChamado}</td>
+                                    <td key={element.statusChamado}> {element.statusChamado}</td>
+                                    <td key={element.tecnicoChamado}> {element.tecnicoChamado}</td>
+                                    <td key={element.sistema}> {element.sistema}</td>
+                                    <td key={element.requerenteChamado}> {element.requerenteChamado}</td>
+                                    <td key={element.valorBoleto}> {element.valorBoleto}</td>
                                     <td></td>  
                                 
                                     
@@ -77,10 +82,14 @@ class PaginationC extends Component {
         this.state = {
           offset: 0,
           data: [],
-          perPage: 5,
+          perPage: 10,
           currentPage: 0
     };
+    
     }
+
+
+
     render() {
         return (
             <Container>

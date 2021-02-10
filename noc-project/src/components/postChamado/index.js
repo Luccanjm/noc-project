@@ -6,11 +6,12 @@ import React, {
 import { FiTrash } from "react-icons/fi";
 
 import {Container,BoxIcon, FormPost,Input, Select, Option, ButtonSubmit} from './styles';
-import {Table, Alert} from 'react-bootstrap';
+import {Table, Alert, Pagination} from 'react-bootstrap';
 import api from '../../services/api';
 import mostrarTecnicos from '../mostrarTecnicos';
 import Tecnico from '../mostrarTecnicos';
 import swal from 'sweetalert';
+import PaginationC from '../pagination';
 
 const PostChamado = () => {
 // chamados 
@@ -329,8 +330,8 @@ const mostrarStatus = useCallback(
       
             </FormPost>
    
- 
- <Table responsive="sm" id="minhaTabela">
+                <PaginationC></PaginationC>
+ {/* <Table responsive="sm" id="minhaTabela">
     <thead>
         <th>ID</th>
         <th>Chamado </th>
@@ -363,7 +364,7 @@ const mostrarStatus = useCallback(
         )}
     </tbody> 
                 
-</Table> 
+</Table>  */}
       
       
 </Container>

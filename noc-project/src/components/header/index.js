@@ -16,24 +16,12 @@ return(
 </ContainerImg>
 <Lista>
 <LinhaLista><Button><LinkLista href="/chamados">Chamados</LinkLista></Button></LinhaLista>
-<LinhaLista><Button><LinkLista href="/filtro">Filtrar Chamados</LinkLista></Button></LinhaLista>
-<LinhaLista><Button><LinkLista href="#">Criar Perfil Técnico</LinkLista></Button></LinhaLista>
+<LinhaLista><Button><LinkLista href="/filtro">Filtro e Relatório</LinkLista></Button></LinhaLista>
 
 <ContainerImg>
-    <img src={logoNoc}></img>
+    {/* <img src={logoNoc}></img> */}
 </ContainerImg>
 
-{/* <LinhaLista id="dropdownlista"><Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic" >
-            lucca.martinelli
-        </Dropdown.Toggle>
-
-        <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Sair</Dropdown.Item>
-
-        </Dropdown.Menu>
-    </Dropdown>
-</LinhaLista> */}
 </Lista>
 
 </Nav>

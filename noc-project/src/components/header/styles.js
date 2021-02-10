@@ -20,7 +20,7 @@ export const Lista = styled.ul`
     display:flex;
     overflow: inherit;
     align-items: center;
-    gap:30px;
+    gap:10px;
     list-style-type: none;
 
 li:first-child{
@@ -56,14 +56,17 @@ export const LinhaLista = styled.li`
 `;
 
 export const Button = styled.button`
-width: 150px;
+width: auto;
  height:40px;
 border-radius:5px;
 border:none;
 background: #28a745;
-// max-width:150px;
-margin: 0 50px;
+max-width:250px;
+min-width:150px;
+margin: 0 20px;
 margin-bottom: 10px;
+margin-top:20px;
+
 `;
 
 export const LinkLista = styled.a`

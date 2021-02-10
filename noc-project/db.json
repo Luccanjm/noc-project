@@ -56,7 +56,7 @@
       "requerenteChamado": "sergio.joão",
       "tecnicoChamado": "sergio.ribeiro",
       "statusChamado": "Pendente",
-      "valorBoleto": "10",
+      "valorBoleto": "58",
       "mesChamado": "Janeiro",
       "id": 6
     },
@@ -66,7 +66,7 @@
       "requerenteChamado": "",
       "tecnicoChamado": "isabella.couto",
       "statusChamado": "Pendente",
-      "valorBoleto": "10",
+      "valorBoleto": "60",
       "mesChamado": "Maio",
       "id": 7
     },
@@ -76,7 +76,7 @@
       "requerenteChamado": "",
       "tecnicoChamado": "lais.moura",
       "statusChamado": "Pendente",
-      "valorBoleto": "10",
+      "valorBoleto": "89",
       "mesChamado": "Março",
       "id": 8
     },
@@ -86,7 +86,7 @@
       "requerenteChamado": "",
       "tecnicoChamado": "lucca.martinelli",
       "statusChamado": "Pendente",
-      "valorBoleto": "10",
+      "valorBoleto": "54",
       "mesChamado": "Abril",
       "id": 9
     },
@@ -96,7 +96,7 @@
       "requerenteChamado": "",
       "tecnicoChamado": "lucca.martinelli",
       "statusChamado": "Processando",
-      "valorBoleto": "10",
+      "valorBoleto": "32",
       "mesChamado": "Janeiro",
       "id": 10
     },
@@ -106,7 +106,7 @@
       "requerenteChamado": "",
       "tecnicoChamado": "isabella.couto",
       "statusChamado": "Pendente",
-      "valorBoleto": "10",
+      "valorBoleto": "19",
       "mesChamado": "Janeiro",
       "id": 11
     },
@@ -139,6 +139,166 @@
       "valorBoleto": "0",
       "mesChamado": "Fevereiro",
       "id": 14
+    },
+    {
+      "numeroChamado": "21231",
+      "sistema": "AIR",
+      "requerenteChamado": "",
+      "tecnicoChamado": "lucca.martinelli",
+      "statusChamado": "Pendente",
+      "valorBoleto": "0",
+      "mesChamado": "Abril",
+      "id": 15
+    },
+    {
+      "numeroChamado": "42342",
+      "sistema": "SYDLE",
+      "requerenteChamado": "",
+      "tecnicoChamado": "isabella.couto",
+      "statusChamado": "Pendente",
+      "valorBoleto": "23",
+      "mesChamado": "Abril",
+      "id": 16
+    },
+    {
+      "numeroChamado": "23555",
+      "sistema": "SYDLE",
+      "requerenteChamado": "",
+      "tecnicoChamado": "lucca.martinelli",
+      "statusChamado": "Pendente",
+      "valorBoleto": "0",
+      "mesChamado": "Março",
+      "id": 17
+    },
+    {
+      "numeroChamado": "256999",
+      "sistema": "AIR",
+      "requerenteChamado": "",
+      "tecnicoChamado": "isabella.couto",
+      "statusChamado": "Processando",
+      "valorBoleto": "0",
+      "mesChamado": "Janeiro",
+      "id": 18
+    },
+    {
+      "numeroChamado": "0338",
+      "sistema": "SYDLE",
+      "requerenteChamado": "",
+      "tecnicoChamado": "lais.moura",
+      "statusChamado": "Pendente",
+      "valorBoleto": "0",
+      "mesChamado": "Abril",
+      "id": 19
+    },
+    {
+      "numeroChamado": "787878",
+      "sistema": "NOC",
+      "requerenteChamado": "",
+      "tecnicoChamado": "sergio.ribeiro",
+      "statusChamado": "Finalizado",
+      "valorBoleto": "0",
+      "mesChamado": "Julho",
+      "id": 20
+    },
+    {
+      "numeroChamado": "99733",
+      "sistema": "SYDLE",
+      "requerenteChamado": "",
+      "tecnicoChamado": "lucas.lopes",
+      "statusChamado": "Pendente",
+      "valorBoleto": "0",
+      "mesChamado": "Fevereiro",
+      "id": 21
+    },
+    {
+      "numeroChamado": "11255",
+      "sistema": "NOC",
+      "requerenteChamado": "",
+      "tecnicoChamado": "lais.moura",
+      "statusChamado": "Finalizado",
+      "valorBoleto": "0",
+      "mesChamado": "Maio",
+      "id": 22
+    },
+    {
+      "numeroChamado": "9749974",
+      "sistema": "SYDLE",
+      "requerenteChamado": "",
+      "tecnicoChamado": "douglas.silva",
+      "statusChamado": "Processando",
+      "valorBoleto": "0",
+      "mesChamado": "Agosto",
+      "id": 23
+    },
+    {
+      "numeroChamado": "4227",
+      "sistema": "NOC",
+      "requerenteChamado": "",
+      "tecnicoChamado": "lucas.lopes",
+      "statusChamado": "Finalizado",
+      "valorBoleto": "0",
+      "mesChamado": "Maio",
+      "id": 24
+    },
+    {
+      "numeroChamado": "66565",
+      "sistema": "SYDLE",
+      "requerenteChamado": "",
+      "tecnicoChamado": "lais.moura",
+      "statusChamado": "Processando",
+      "valorBoleto": "0",
+      "mesChamado": "Julho",
+      "id": 25
+    },
+    {
+      "numeroChamado": "544848",
+      "sistema": "AIR",
+      "requerenteChamado": "",
+      "tecnicoChamado": "lucas.lopes",
+      "statusChamado": "Finalizado",
+      "valorBoleto": "0",
+      "mesChamado": "Maio",
+      "id": 26
+    },
+    {
+      "numeroChamado": "44848",
+      "sistema": "NOC",
+      "requerenteChamado": "",
+      "tecnicoChamado": "isabella.couto",
+      "statusChamado": "Processando",
+      "valorBoleto": "00",
+      "mesChamado": "Fevereiro",
+      "id": 27
+    },
+    {
+      "numeroChamado": "455618",
+      "sistema": "SYDLE",
+      "requerenteChamado": "",
+      "tecnicoChamado": "douglas.silva",
+      "statusChamado": "Finalizado",
+      "valorBoleto": "0",
+      "mesChamado": "Maio",
+      "id": 28
+    },
+    {
+      "numeroChamado": "8455",
+      "sistema": "AIR",
+      "requerenteChamado": "",
+      "tecnicoChamado": "lucca.martinelli",
+      "statusChamado": "Pendente",
+      "valorBoleto": "0",
+      "mesChamado": "Março",
+      "id": 29
+    },
+    {
+      "numeroChamado": "4546565",
+      "sistema": "NOC",
+      "requerenteChamado": "",
+      "tecnicoChamado": "sergio.ribeiro",
+      "statusChamado": "Finalizado",
+      "valorBoleto": "0",
+      "mesChamado": "Maio",
+      "id": 30
     }
   ],
   "tecnico": [
