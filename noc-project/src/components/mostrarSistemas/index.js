@@ -82,15 +82,16 @@ const Sistema = () => {
     return(
         <>
         <Container>
-        <select>
-                  
-                  { sistemas.map(
-                  (item) =>
-                  <option>{item.nome}</option>
-                  )}
+            <select>
+                    
+                    { sistemas.map(
+                    (item) =>
+                    <option>{item.nome}</option>
+                    )}
 
-              </select>
+            </select>
       </Container>
-  </> );
+  </> 
+    );
 }
 export default Sistema; 

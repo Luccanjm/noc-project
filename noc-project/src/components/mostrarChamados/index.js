@@ -113,42 +113,42 @@ const ExibirChamados = () => {
 
 
  {/* </ContainerCard> */}
-return(
-    <ContainerTable>
-        
- <Table responsive="sm">
-    <thead>
-        <th>Chamado </th>
-        <th>Mês</th>
-        <th>Status</th>
-        <th>Técnico</th>
-        <th>Sistema</th>
-        <th>Requerente</th>
-        <th>Valor do boleto</th>
-    </thead>
-    
-    <tbody>
-        {chamadoE.map((item) =>
-            <tr>
-                <td key={item.numeroChamado}> {item.numeroChamado}</td>
-                <td key={item.mesChamado}> {item.mesChamado}</td>
-                <td key={item.statusChamado}> {item.statusChamado}</td>
-                <td key={item.tecnicoChamado}> {item.tecnicoChamado}</td>
-                <td key={item.sistema}> {item.sistema}</td>
-                <td key={item.requerenteChamado}> {item.requerenteChamado}</td>
-                <td key={item.valorBoleto}> {item.valorBoleto}</td>
+    return(
+        <ContainerTable>
+            
+            <Table responsive="sm">
+                <thead>
+                    <th>Chamado </th>
+                    <th>Mês</th>
+                    <th>Status</th>
+                    <th>Técnico</th>
+                    <th>Sistema</th>
+                    <th>Requerente</th>
+                    <th>Valor do boleto</th>
+                </thead>
                 
-                
-            </tr>
+                <tbody>
+                    {chamadoE.map((item) =>
+                        <tr>
+                            <td key={item.numeroChamado}> {item.numeroChamado}</td>
+                            <td key={item.mesChamado}> {item.mesChamado}</td>
+                            <td key={item.statusChamado}> {item.statusChamado}</td>
+                            <td key={item.tecnicoChamado}> {item.tecnicoChamado}</td>
+                            <td key={item.sistema}> {item.sistema}</td>
+                            <td key={item.requerenteChamado}> {item.requerenteChamado}</td>
+                            <td key={item.valorBoleto}> {item.valorBoleto}</td>
                             
-        )}
-    </tbody> 
+                            
+                        </tr>
+                                        
+                    )}
+                </tbody> 
+                            
+            </Table>
                 
-</Table>
-      
 
 
-</ContainerTable>
+        </ContainerTable>
 
    );
 }

@@ -21,13 +21,13 @@ import React, {
       return {};
     });
   
-    return (
-      <AuthContext.Provider
-        value={{ tecnico: data.tecnico }}
-      >
-        {children}
-      </AuthContext.Provider>
-    );
+      return (
+        <AuthContext.Provider
+          value={{ tecnico: data.tecnico }}
+        >
+          {children}
+        </AuthContext.Provider>
+      );
   };
   
   function useAuth() {

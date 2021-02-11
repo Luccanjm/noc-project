@@ -21,39 +21,39 @@ class PaginationC extends Component {
                 const postData = 
                 <React.Fragment>
                     <Container>
-                    <Table responsive="sm" id="minhaTabela">
-                        <thead>
-                            <th>ID</th>
-                            <th>Chamado </th>
-                            <th>Mês</th>
-                            <th>Status</th>
-                            <th>Técnico</th>
-                            <th>Sistema</th>
-                            <th>Requerente</th>
-                            <th>Valor do boleto</th>
-                            <th>#</th>
-                        </thead>
-                        <tbody>
-                            {slice.map((element) =>
-                                <tr>
-                                    <td key={element.id}> {element.id}</td>
-                                    <td key={element.numeroChamado}> {element.numeroChamado}</td>
-                                    <td key={element.mesChamado}> {element.mesChamado}</td>
-                                    <td key={element.statusChamado}> {element.statusChamado}</td>
-                                    <td key={element.tecnicoChamado}> {element.tecnicoChamado}</td>
-                                    <td key={element.sistema}> {element.sistema}</td>
-                                    <td key={element.requerenteChamado}> {element.requerenteChamado}</td>
-                                    <td key={element.valorBoleto}> {element.valorBoleto}</td>
-                                    <td></td>  
-                                
+                        <Table responsive="sm" id="minhaTabela">
+                            <thead>
+                                <th>ID</th>
+                                <th>Chamado </th>
+                                <th>Mês</th>
+                                <th>Status</th>
+                                <th>Técnico</th>
+                                <th>Sistema</th>
+                                <th>Requerente</th>
+                                <th>Valor do boleto</th>
+                                <th>#</th>
+                            </thead>
+                            <tbody>
+                                {slice.map((element) =>
+                                    <tr>
+                                        <td key={element.id}> {element.id}</td>
+                                        <td key={element.numeroChamado}> {element.numeroChamado}</td>
+                                        <td key={element.mesChamado}> {element.mesChamado}</td>
+                                        <td key={element.statusChamado}> {element.statusChamado}</td>
+                                        <td key={element.tecnicoChamado}> {element.tecnicoChamado}</td>
+                                        <td key={element.sistema}> {element.sistema}</td>
+                                        <td key={element.requerenteChamado}> {element.requerenteChamado}</td>
+                                        <td key={element.valorBoleto}> {element.valorBoleto}</td>
+                                        <td></td>  
                                     
-                                </tr>
-                                            
-                            )}
+                                        
+                                    </tr>
                                                 
-                            
-                        </tbody>
-                    </Table>
+                                )}
+                                                    
+                                
+                            </tbody>
+                        </Table>
                     </Container>
                 </React.Fragment>
 

@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
 export const Head = styled.header`
-grid-area:h;
-background: linear-gradient(120deg, rgb(0, 175, 239), rgb(163, 205, 77));
+    grid-area:h;
+    background: linear-gradient(120deg, rgb(0, 175, 239), rgb(163, 205, 77));
 
-img{
-    width:100px;
-    margin-left:calc((5 / 16) * 100%);
-}
-.nav-item{
-    margin-top:1%;
-    
-}
+    img{
+        width:100px;
+        margin-left:calc((5 / 16) * 100%);
+    }
+    .nav-item{
+        margin-top:1%;
+        
+    }
 
 
 `;
@@ -56,16 +56,16 @@ export const LinhaLista = styled.li`
 `;
 
 export const Button = styled.button`
-width: auto;
- height:40px;
-border-radius:5px;
-border:none;
-background: #28a745;
-max-width:250px;
-min-width:150px;
-margin: 0 20px;
-margin-bottom: 10px;
-margin-top:20px;
+    width: auto;
+    height:40px;
+    border-radius:5px;
+    border:none;
+    background: #28a745;
+    max-width:250px;
+    min-width:150px;
+    margin: 0 20px;
+    margin-bottom: 10px;
+    margin-top:20px;
 
 `;
 

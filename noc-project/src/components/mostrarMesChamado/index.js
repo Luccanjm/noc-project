@@ -37,6 +37,6 @@ const MesChamado = () => {
 
               </select>
         </>
-        );
+    );
 }
 export default MesChamado;

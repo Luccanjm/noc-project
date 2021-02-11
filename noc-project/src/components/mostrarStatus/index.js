@@ -4,7 +4,6 @@ import React, {
     useEffect
 } from 'react';
 
-import {Container} from './styles';
 import api from '../../services/api';
 
 const Status = () => {
@@ -81,16 +80,17 @@ const Status = () => {
     
     return(
         <>
-        <>
-        <select>
+        
+            <select>
                   
                   { statusChamadoE.map(
                   (item) =>
                   <option>{item.status}</option>
                   )}
 
-              </select>
-      </>
-  </> );
+            </select>
+      
+        </> 
+  );
 }
 export default Status; 

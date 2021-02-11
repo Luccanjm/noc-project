@@ -16,8 +16,8 @@ import PaginationC from '../components/pagination';
 const Routes = () => (
 <BrowserRouter>
 <Switch>
-<Route path="/" component={Dashboard} exact />
-<Route path="/dashboard" component={Dashboard}/>
+<Route path="/" component={Chamados} exact />
+{/* <Route path="/dashboard" component={Dashboard}/> */}
 <Route path="/chamados" component={Chamados}/>
 <Route path="/filtro" component={FiltroChamado}/>
 <Route path="/pagination" component={PaginationC}/>

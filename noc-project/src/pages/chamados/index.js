@@ -1,9 +1,7 @@
 import React from 'react';
 import {} from 'react-bootstrap';
-import { Main, ContainerImg, ContainerGeral, Lista, LinhaLista, LinkLista,Button} from './styles';
-import logoBranco from '../../assets/logo.png';
+import { Main, ContainerGeral} from './styles';
 
-import ExibirChamados from '../../components/mostrarChamados';
 import PostChamado from '../../components/postChamado';
 import Footer from '../../components/footer';
 import Header from '../../components/header';
@@ -13,16 +11,17 @@ const Chamados = () =>{
     <>
     </>
 
-        return(
+    return(
         <ContainerGeral>
-           <Header id="header"></Header>
-        <Main>
-               {/* <ExibirChamados id="ExibirChamados"></ExibirChamados> */}
-               <PostChamado id="PostChamado"></PostChamado>
-</Main>
-<Footer id="footer"></Footer>
+            <Header id="header"></Header>
+            <Main>
+                {/* <ExibirChamados id="ExibirChamados"></ExibirChamados> */}
+                <PostChamado id="PostChamado"></PostChamado>
+            </Main>
+        <Footer id="footer"></Footer>
     
-</ContainerGeral>
-);
+        </ContainerGeral>
+    );
 }
+
 export default Chamados;

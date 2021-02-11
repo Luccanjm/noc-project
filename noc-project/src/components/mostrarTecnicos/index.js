@@ -23,6 +23,7 @@ const Tecnico = () => {
             }
         },[tecnicos]
     );
+
     useEffect(() =>{
         mostrarTecnicos();
     }, [mostrarTecnicos])
@@ -80,17 +81,17 @@ const Tecnico = () => {
 
     return(
         <>
-          <Container>
-          <select>
-                    
-                    { tecnicos.map(
-                    (item) =>
-                    <option>{item.nome}</option>
-                    )}
+            <Container>
+                <select>
+                            
+                            { tecnicos.map(
+                            (item) =>
+                            <option>{item.nome}</option>
+                            )}
 
-                </select>
-        </Container>
-    </>
+                        </select>
+            </Container>
+        </>
     );
 }
 export default Tecnico;

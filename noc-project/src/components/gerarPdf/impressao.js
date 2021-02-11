@@ -1,4 +1,3 @@
-import logo from '../../assets/logoAzul.png';
 
 export class Impressao {
 

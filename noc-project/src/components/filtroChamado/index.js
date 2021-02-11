@@ -5,7 +5,6 @@ import React, {
 } from 'react';
 import Header from '../header';
 import Footer from '../footer';
-import Pdf from "react-to-pdf";
 
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
@@ -112,13 +111,14 @@ const FiltroChamado = () => {
             <Header id="header"></Header>
             <ContainerTitle><PTitle>Selecione o mês que deseja verificar os chamados</PTitle></ContainerTitle>
             <ContainerSelect>
-                    <Select  onChange={(e) => setMesfiltro(e.target.value)}>  
-                        <Option value="" selected disabled hidden>----</Option>
-                            { mesChamadoE.map((object) =>
+                <Select  onChange={(e) => setMesfiltro(e.target.value)}>  
+                    <Option value="" selected disabled hidden>----</Option>
+                        { mesChamadoE.map((object) =>
                                 <Option value={chamadoE.mesChamado}>{object.nomeMes}</Option>
-                            )}
+                        )}
                 </Select>
             </ContainerSelect>
+
             <Container>
 
                 <Table>
@@ -159,16 +159,19 @@ const FiltroChamado = () => {
            
                 </Table>
             </Container>
+
             <ContainerContagem>
             </ContainerContagem>
 
             <ContainerButton>
-                    <ButtonSubmit className="btn" onClick={visualizarImpressao}>
-                            Gerar relatório 
-                        </ButtonSubmit>
-                 </ContainerButton>
+                <ButtonSubmit className="btn" onClick={visualizarImpressao}>
+                    Gerar relatório 
+                </ButtonSubmit>
+            </ContainerButton>
+
             <Footer id="footer"></Footer>
-  </> );
+        </> 
+    );
 }
 
 export default FiltroChamado; 
