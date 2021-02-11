@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: #145E7D;
     color: #FFFFFF;
-  }
+    }
   nav {
 
 

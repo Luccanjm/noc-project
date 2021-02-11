@@ -65,4 +65,5 @@ export const ButtonSubmit = styled.button`
   border-radius:5px;
   border:none;
   background: #28a745;
+  color:#fff;
 `;

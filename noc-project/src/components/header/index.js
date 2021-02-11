@@ -15,8 +15,8 @@ const Header = () =>{
                     <img src={logoBranco}></img>
                 </ContainerImg>
                 <Lista>
-                    <LinhaLista><Button><LinkLista href="/chamados">Chamados</LinkLista></Button></LinhaLista>
-                    <LinhaLista><Button><LinkLista href="/filtro">Filtro e Relatório</LinkLista></Button></LinhaLista>
+                    <LinhaLista><Button className="buttonNav"><LinkLista href="/chamados">Chamados</LinkLista></Button></LinhaLista>
+                    <LinhaLista><Button className="buttonNav"><LinkLista href="/filtro">Filtro e Relatório</LinkLista></Button></LinhaLista>
 
                     <ContainerImg>
                         {/* <img src={logoNoc}></img> */}

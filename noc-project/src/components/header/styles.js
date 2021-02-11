@@ -27,28 +27,11 @@ li:first-child{
     margin-left:calc((1 / 16) * 100%);
 
     }
-    a:hover{
-        color: #145E7D; 
-        text-decoration:none;
-    } 
-    .btn-success{
-        background-color: rgb(0, 175, 239);
-        border:none;
-
-    }
-    .btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle{
-        background-color: rgb(0, 175, 239);
-        border:none;
-    }
-    .dropdown-menu[x-placement^=bottom], .dropdown-menu[x-placement^=left], .dropdown-menu[x-placement^=right], .dropdown-menu[x-placement^=top]{
-        background-color: rgb(0, 175, 239);
-        border:none;
-        color:#fff;
-    }
-    .dropdown-item:focus, .dropdown-item:hover{
-        background-color: rgb(0, 175, 239);
-        border:none;
-        color:#fff;
+   
+    button:hover{
+        background:rgb(175,203,08);
+        height:60px;
+        width:200px;
     }
 `;
 
@@ -62,11 +45,15 @@ export const Button = styled.button`
     border:none;
     background: #28a745;
     max-width:250px;
-    min-width:150px;
+    min-width:180px;
     margin: 0 20px;
     margin-bottom: 10px;
     margin-top:20px;
-
+    transition: 0.5s;
+    a:hover{
+        color:#fff;
+        text-decoration:none;
+    } 
 `;
 
 export const LinkLista = styled.a`
