@@ -2,58 +2,60 @@
 export class Impressao {
 
 
-    constructor(dadosParaImpressao) {
-      this.dadosParaImpressao = dadosParaImpressao;
+  constructor(dadosParaImpressao) {
+    this.dadosParaImpressao = dadosParaImpressao;
 
-    }  
-    
-    async PreparaDocumento() {
-      const corpoDocumento = this.CriaCorpoDocumento();
-      const documento = this.GerarDocumento(corpoDocumento);
-      return documento;
+    let valorTotal = 0;
+    for (let i = 0; i < dadosParaImpressao.length; i++) {
+        valorTotal += parseFloat(dadosParaImpressao[i].valorBoleto);
     }
+  }  
   
-    CriaCorpoDocumento() {
-      const header = [
-        { text: 'Mês Chamado', bold: true, fontSize: 12, margin: [0, 4, 0, 0] },
-        { text: 'Número Chamado', bold: true, fontSize: 12, margin: [0, 4, 0, 0] },
-        { text: 'Valor Boleto', bold: true, fontSize: 12, margin: [0, 4, 0, 0] },
-        { text: 'Técnico Chamado', bold: true, fontSize: 12, margin: [0, 4, 0, 0] },
-        { text: 'Sistema', bold: true, fontSize: 12, margin: [0, 4, 0, 0] },
+  async PreparaDocumento() {
+    const corpoDocumento = this.CriaCorpoDocumento();
+    const documento = this.GerarDocumento(corpoDocumento);
+    return documento;
+  }
 
+  CriaCorpoDocumento() {
+    const header = [
+      { text: 'Mês Chamado', bold: true, fontSize: 12, margin: [0, 4, 0, 0] },
+      { text: 'Número Chamado', bold: true, fontSize: 12, margin: [0, 4, 0, 0] },
+      { text: 'Valor Boleto', bold: true, fontSize: 12, margin: [0, 4, 0, 0] },
+      { text: 'Técnico Chamado', bold: true, fontSize: 12, margin: [0, 4, 0, 0] },
+      { text: 'Sistema', bold: true, fontSize: 12, margin: [0, 4, 0, 0] },
 
+    ];
+    const body = this.dadosParaImpressao.map((item) => {
+      return [
+        { text: item.mesChamado, fontSize: 12 },
+        { text: item.numeroChamado, fontSize: 12 },
+        { text: item.valorBoleto, fontSize: 12 },
+        { text: item.tecnicoChamado, fontSize: 12 },
+        { text: item.sistema, fontSize: 12 },
+
+      
       ];
-      const body = this.dadosParaImpressao.map((item) => {
-        return [
-          { text: item.mesChamado, fontSize: 12 },
-          { text: item.numeroChamado, fontSize: 12 },
-          { text: item.valorBoleto, fontSize: 12 },
-          { text: item.tecnicoChamado, fontSize: 12 },
-          { text: item.sistema, fontSize: 12 }
+    });
+   
+   
+    const lineHeader = [
+      {
+        text:
+          '__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________',
+        alignment: 'center',
+        fontSize: 5,
+        colSpan: 5,
+        
+      },
+      {},
+      {},
+    ];
 
-
-
-        ];
-      });
-     
-  
-      const lineHeader = [
-        {
-          text:
-            '__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________',
-          alignment: 'center',
-          fontSize: 5,
-          colSpan: 5,
-          
-        },
-        {},
-        {},
-      ];
-  
-      let content = [header, lineHeader];
-      content = [...content, ...body];
-      return content;
-    }
+    let content = [header, lineHeader];
+    content = [...content, ...body];
+    return content;
+  }
   
     GerarDocumento(corpoDocumento) {
       const documento = {
@@ -114,7 +116,7 @@ export class Impressao {
                         text: '© NOC TI | Sumicity 2021 ',
                         fontSize: 7,
                         alignment: 'center',
-                      },
+                      }
                     ],
                   ],
                 ],

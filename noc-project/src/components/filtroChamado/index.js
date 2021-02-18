@@ -92,19 +92,21 @@ const FiltroChamado = () => {
     
 
     // Gerar Pdf Filtrado
-
-    const visualizarImpressao = async () => {
-        console.log('report', filtro);
-        const classeImpressao = new Impressao(filtro);
-        const documento = await classeImpressao.PreparaDocumento();
-        pdfMake.createPdf(documento).open({}, window.open('', '_blank'));
-    }
+ 
+ 
 
       let valorTotal = 0;
       for (let i = 0; i < filtro.length; i++) {
           valorTotal += parseFloat(filtro[i].valorBoleto);
       }
-
+     
+        const visualizarImpressao = async () => {
+            console.log('report', filtro);
+            const classeImpressao = new Impressao(filtro);
+            const documento = await classeImpressao.PreparaDocumento();
+            pdfMake.createPdf(documento).open({}, window.open('', '_blank'));
+            console.log(documento)
+        }
 // console.log("valorTotal", valorTotal);
      return(
         <>
